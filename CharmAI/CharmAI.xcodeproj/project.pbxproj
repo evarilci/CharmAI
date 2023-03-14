@@ -19,6 +19,9 @@
 		E554C1A429C05BCF00053C44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C1A329C05BCF00053C44 /* Constants.swift */; };
 		E554C1A729C05C6400053C44 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E554C1A629C05C6400053C44 /* SnapKit */; };
 		E556158829C0B34400A99043 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E556158729C0B34400A99043 /* Inter.ttf */; };
+		E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E556158929C0B71700A99043 /* ChatViewController.swift */; };
+		E57EECB029C0BD0700155608 /* barView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECAF29C0BD0700155608 /* barView.swift */; };
+		E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB329C0BFDF00155608 /* ChatCell.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +39,9 @@
 		E554C19329C0557F00053C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E554C1A329C05BCF00053C44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E556158729C0B34400A99043 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
+		E556158929C0B71700A99043 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E57EECAF29C0BD0700155608 /* barView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barView.swift; sourceTree = "<group>"; };
+		E57EECB329C0BFDF00155608 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +113,7 @@
 		E554C19A29C058C400053C44 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E556158B29C0B72000A99043 /* Chat */,
 				E556157429C0B2A700A99043 /* Fonts */,
 				E50E5BED29C071AB00535AA3 /* Onboarding */,
 			);
@@ -183,6 +190,32 @@
 				E556158729C0B34400A99043 /* Inter.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E556158B29C0B72000A99043 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E57EECB229C0BFCF00155608 /* View */,
+				E57EECB129C0BFC800155608 /* Controller */,
+				E57EECAF29C0BD0700155608 /* barView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		E57EECB129C0BFC800155608 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E556158929C0B71700A99043 /* ChatViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E57EECB229C0BFCF00155608 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E57EECB329C0BFDF00155608 /* ChatCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,11 +300,14 @@
 				E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */,
 				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,
 				E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */,
+				E57EECB029C0BD0700155608 /* barView.swift in Sources */,
 				E554C18D29C0557E00053C44 /* CharmAI.xcdatamodeld in Sources */,
+				E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */,
 				E50E5BEA29C06A4800535AA3 /* CharmButton.swift in Sources */,
 				E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */,
 				E554C18329C0557E00053C44 /* AppDelegate.swift in Sources */,
 				E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */,
+				E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */,
 				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

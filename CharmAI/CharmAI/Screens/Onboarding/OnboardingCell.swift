@@ -56,7 +56,6 @@ final class OnboardingCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
     }
     
@@ -66,7 +65,6 @@ final class OnboardingCell: UICollectionViewCell {
     
   
     func setupUI() {
-       
         let stack = UIStackView(arrangedSubviews: [titleLabelBeginning,titleLabelEnding])
         stack.axis = .horizontal
         stack.distribution = .fillProportionally

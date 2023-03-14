@@ -30,7 +30,6 @@ class FirstOnboardingViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -38,16 +37,21 @@ class FirstOnboardingViewController: UIViewController {
         collectionView.dataSource = self
         pageControll.numberOfPages = slides.count
         view.backgroundColor = .black
-        
+       
+   
        
         
     }
     
     @objc func buttonClicked() {
-        if currentPage == slides.count - 1 {
+      
+        if self.currentPage == slides.count - 1 {
+           
           print("end of onboarding")
         } else {
-            currentPage += 1
+            self.pageControll.currentPage = self.currentPage
+            self.currentPage += 1
+            print("current page =  \(currentPage)")
             let indexPath = IndexPath(item: currentPage, section: 0)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
@@ -69,14 +73,14 @@ class FirstOnboardingViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         pageControll.currentPageIndicatorTintColor = .accentColor
         pageControll.tintColor = .systemGray6
-        
+        pageControll.currentPage = 0
         view.addSubview(collectionView)
         view.addSubview(pageControll)
         view.bringSubviewToFront(pageControll)
         view.addSubview(nextButton)
+     
         
-        
-        nextButton.snp.makeConstraints { make in
+        pageControll.snp.makeConstraints { make in
                    make.bottom.equalToSuperview { view in
                        view.safeAreaLayoutGuide
                    }.offset(-50)
@@ -89,23 +93,18 @@ class FirstOnboardingViewController: UIViewController {
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(nextButton.snp.top)
+            make.bottom.equalTo(pageControll.snp.top)
         }
         
         
-        pageControll.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(nextButton.snp.top)
-            make.width.equalTo(30)
-            make.height.equalTo(7)
-        }
-        
+        nextButton.snp.makeConstraints { make in
+                make.top.equalTo(pageControll.snp.bottom).offset(8)
+                   make.centerX.equalToSuperview()
+                   make.width.equalToSuperview().multipliedBy(0.7)
+                   make.height.equalTo(50)
+               }
         
     }
-    
-    
-    
-    
     
 }
 extension FirstOnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -125,8 +124,6 @@ extension FirstOnboardingViewController: UICollectionViewDelegate, UICollectionV
  // MARK: UICollectionViewFlowLayout
  extension FirstOnboardingViewController: UICollectionViewDelegateFlowLayout {
      
-    
-     
      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
          
@@ -136,132 +133,11 @@ extension FirstOnboardingViewController: UICollectionViewDelegate, UICollectionV
      // scrolling through pages
      func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
          let width = scrollView.frame.width
-         currentPage = Int(self.collectionView.contentOffset.x / width)
+         currentPage = Int(scrollView.contentOffset.x / width)
+         print("current page =  \(currentPage)")
          
      }
      
      
  }
-
-     
-//
-//    let onboardingImage: UIImageView = {
-//       let iv = UIImageView()
-//        iv.image = UIImage(named: K.Images.onboardingImage1)
-//        iv.clipsToBounds = true
-//        return iv
-//    }()
-//    private let titleLabelBeginning : UILabel = {
-//       let label = UILabel()
-//        label.font = .boldSystemFont(ofSize: 25)
-//        label.text = "Lorem"
-//        label.textAlignment = .right
-//        label.textColor = .white
-//        return label
-//    }()
-//
-//    private let titleLabelEnding : UILabel = {
-//       let label = UILabel()
-//        label.font = .boldSystemFont(ofSize: 25)
-//        label.text = "Ipsum dolor sit"
-//        label.textAlignment = .left
-//        label.textColor = .accentColor
-//        return label
-//    }()
-//
-//     let subtitleLabel : UILabel = {
-//       let label = UILabel()
-//        label.font = UIFont(name: "Helvetica-Neue", size: 17)
-//        label.text = "Ask the bot anything, It's always ready to help!"
-//        label.textAlignment = .center
-//        label.numberOfLines = 2
-//        label.textColor = .white
-//        return label
-//    }()
-//
-//     let pageView: UIImageView = {
-//       let iv = UIImageView()
-//        iv.image = UIImage(named: K.Images.slider1)
-//        iv.clipsToBounds = true
-//        iv.hero.id = "page"
-//        return iv
-//    }()
-//
-//
-//     let nextButton = CharmButton(title: "Next")
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.isHeroEnabled = true
-//        self.navigationController!.hero.navigationAnimationType = .cover(direction: .left)
-//        self.navigationController!.hero.modalAnimationType = .pageOut(direction: .left)
-//        setupUI()
-//
-//    }
-//
-//    func setupUI() {
-//        let stack = UIStackView(arrangedSubviews: [titleLabelBeginning,titleLabelEnding])
-//        stack.axis = .horizontal
-//        stack.distribution = .fillProportionally
-//        stack.spacing = 5
-//        view.backgroundColor = .black
-//
-//
-//        let action = UIAction { _ in
-//            let nc = UINavigationController(rootViewController: SecondOnboardingViewController())
-//            nc.hero.isEnabled = true
-//            self.navigationController?.pushViewController(SecondOnboardingViewController(), animated: true)
-//        }
-//        nextButton.addAction(action, for: .touchUpInside)
-//
-//        view.addSubview(onboardingImage)
-//        view.addSubview(stack)
-//        view.addSubview(subtitleLabel)
-//        view.addSubview(nextButton)
-//        view.addSubview(pageView)
-//
-//
-//
-//
-//        onboardingImage.snp.makeConstraints { make in
-//            make.top.equalToSuperview()
-//            make.leading.equalToSuperview()
-//            make.trailing.equalToSuperview()
-//            make.height.equalTo(onboardingImage.snp.width)
-//        }
-//        stack.snp.makeConstraints { make in
-//            make.top.equalTo(onboardingImage.snp.bottom).offset(16)
-//            make.centerX.equalTo(onboardingImage.snp.centerX)
-//            make.height.equalTo(50)
-//
-//
-//        }
-//
-//        subtitleLabel.snp.makeConstraints { make in
-//            make.top.equalTo(stack.snp.bottom).offset(24)
-//            make.centerX.equalToSuperview()
-//            make.height.equalTo(75)
-//            make.width.equalTo(stack.snp.width)
-//        }
-//
-//        nextButton.snp.makeConstraints { make in
-//            make.bottom.equalToSuperview { view in
-//                view.safeAreaLayoutGuide
-//            }.inset(24)
-//            make.centerX.equalToSuperview()
-//            make.width.equalToSuperview().multipliedBy(0.7)
-//            make.height.equalTo(50)
-//        }
-//
-//        pageView.snp.makeConstraints { make in
-//            make.bottom.equalTo(nextButton.snp.top).offset(-16)
-//            make.centerX.equalToSuperview()
-//            make.width.equalTo(40)
-//            make.height.equalTo(4)
-//        }
-//
-//
-//    }
-
-//}
 

@@ -19,7 +19,7 @@ final class OnboardingCell: UICollectionViewCell {
     }()
     private let titleLabelBeginning : UILabel = {
        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 25)
+        label.font = UIFont(name: "Inter", size: 27)
         label.text = "Lorem"
         label.textAlignment = .right
         label.textColor = .white
@@ -28,7 +28,7 @@ final class OnboardingCell: UICollectionViewCell {
     
     private let titleLabelEnding : UILabel = {
        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 25)
+        label.font = UIFont(name: "Inter", size: 27)
         label.text = "Ipsum dolor sit"
         label.textAlignment = .left
         label.textColor = .accentColor
@@ -37,7 +37,7 @@ final class OnboardingCell: UICollectionViewCell {
     
      let subtitleLabel : UILabel = {
        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Neue", size: 17)
+        label.font = UIFont(name: "Inter", size: 18)
         label.text = "Ask the bot anything, It's always ready to help!"
         label.textAlignment = .center
         label.numberOfLines = 2

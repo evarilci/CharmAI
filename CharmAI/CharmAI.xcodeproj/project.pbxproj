@@ -22,6 +22,8 @@
 		E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E556158929C0B71700A99043 /* ChatViewController.swift */; };
 		E57EECB029C0BD0700155608 /* barView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECAF29C0BD0700155608 /* barView.swift */; };
 		E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB329C0BFDF00155608 /* ChatCell.swift */; };
+		E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB529C0C3B200155608 /* UIView+Extension.swift */; };
+		E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB729C0D0BF00155608 /* ChatInputView.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		E556158929C0B71700A99043 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E57EECAF29C0BD0700155608 /* barView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barView.swift; sourceTree = "<group>"; };
 		E57EECB329C0BFDF00155608 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		E57EECB529C0C3B200155608 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E57EECB729C0D0BF00155608 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */,
+				E57EECB529C0C3B200155608 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				E57EECB329C0BFDF00155608 /* ChatCell.swift */,
+				E57EECB729C0D0BF00155608 /* ChatInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */,
+				E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */,
 				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,
 				E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */,
 				E57EECB029C0BD0700155608 /* barView.swift in Sources */,
@@ -309,6 +316,7 @@
 				E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */,
 				E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */,
 				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
+				E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

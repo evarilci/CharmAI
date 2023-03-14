@@ -9,7 +9,8 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     let tableView = UITableView()
-    
+  
+    private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +20,14 @@ final class ChatViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ChatCell.self, forCellReuseIdentifier: K.HomeScreenCellIdentifier)
+        tableView.backgroundColor = .black
     }
     
     @objc func goSettings() {
         print("settings")
     }
     @objc func refresh() {
-        
+        print("refresh")
     }
     
     func setupUI() {
@@ -39,11 +41,14 @@ final class ChatViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
-        
-        
-        
-        
-        
+        tableView.rowHeight = 60
+    }
+    override var inputAccessoryView: UIView? {
+        get { return chatInputView }
+    }
+  
+    override var canBecomeFirstResponder: Bool {
+        return true
     }
     
 }

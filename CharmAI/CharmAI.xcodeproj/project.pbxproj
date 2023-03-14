@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50E5BEA29C06A4800535AA3 /* CharmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E5BE929C06A4800535AA3 /* CharmButton.swift */; };
+		E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */; };
+		E50E5BF229C074CE00535AA3 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = E50E5BF129C074CE00535AA3 /* Hero */; };
 		E554C18329C0557E00053C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C18229C0557E00053C44 /* AppDelegate.swift */; };
 		E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C18429C0557E00053C44 /* SceneDelegate.swift */; };
-		E554C18729C0557E00053C44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C18629C0557E00053C44 /* ViewController.swift */; };
+		E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C18629C0557E00053C44 /* FirstOnboardingViewController.swift */; };
 		E554C18D29C0557E00053C44 /* CharmAI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E554C18B29C0557E00053C44 /* CharmAI.xcdatamodeld */; };
 		E554C18F29C0557F00053C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E554C18E29C0557F00053C44 /* Assets.xcassets */; };
 		E554C19229C0557F00053C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E554C19029C0557F00053C44 /* LaunchScreen.storyboard */; };
+		E554C1A429C05BCF00053C44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C1A329C05BCF00053C44 /* Constants.swift */; };
+		E554C1A729C05C6400053C44 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E554C1A629C05C6400053C44 /* SnapKit */; };
+		E5BC03FB29C07F9A00C38E42 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FA29C07F9A00C38E42 /* PageViewController.swift */; };
+		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
+		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E50E5BE929C06A4800535AA3 /* CharmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharmButton.swift; sourceTree = "<group>"; };
+		E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E554C17F29C0557E00053C44 /* CharmAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharmAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E554C18229C0557E00053C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E554C18429C0557E00053C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E554C18629C0557E00053C44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E554C18629C0557E00053C44 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
 		E554C18C29C0557E00053C44 /* CharmAI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CharmAI.xcdatamodel; sourceTree = "<group>"; };
 		E554C18E29C0557F00053C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E554C19129C0557F00053C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E554C19329C0557F00053C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E554C1A329C05BCF00053C44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5BC03FA29C07F9A00C38E42 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +45,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
+				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E50E5BED29C071AB00535AA3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E554C18629C0557E00053C44 /* FirstOnboardingViewController.swift */,
+				E5BC03FA29C07F9A00C38E42 /* PageViewController.swift */,
+				E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */,
+				E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		E554C17629C0557D00053C44 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +83,98 @@
 		E554C18129C0557E00053C44 /* CharmAI */ = {
 			isa = PBXGroup;
 			children = (
-				E554C18229C0557E00053C44 /* AppDelegate.swift */,
-				E554C18429C0557E00053C44 /* SceneDelegate.swift */,
-				E554C18629C0557E00053C44 /* ViewController.swift */,
-				E554C18E29C0557F00053C44 /* Assets.xcassets */,
-				E554C19029C0557F00053C44 /* LaunchScreen.storyboard */,
-				E554C19329C0557F00053C44 /* Info.plist */,
+				E554C19929C058B800053C44 /* App */,
+				E554C19A29C058C400053C44 /* Screens */,
 				E554C18B29C0557E00053C44 /* CharmAI.xcdatamodeld */,
 			);
 			path = CharmAI;
+			sourceTree = "<group>";
+		};
+		E554C19929C058B800053C44 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E554C1A829C05D2800053C44 /* Extensions */,
+				E554C1A229C05BB600053C44 /* Helpers */,
+				E554C1A129C0591D00053C44 /* Assets */,
+				E554C1A029C058FD00053C44 /* ReusableViews */,
+				E554C19F29C058EF00053C44 /* Network */,
+				E554C19E29C058E800053C44 /* Base */,
+				E554C19D29C058E200053C44 /* Plists */,
+				E554C19B29C058CE00053C44 /* Delegates */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E554C19A29C058C400053C44 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E50E5BED29C071AB00535AA3 /* Onboarding */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E554C19B29C058CE00053C44 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E554C18429C0557E00053C44 /* SceneDelegate.swift */,
+				E554C18229C0557E00053C44 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		E554C19D29C058E200053C44 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				E554C19329C0557F00053C44 /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		E554C19E29C058E800053C44 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E554C19029C0557F00053C44 /* LaunchScreen.storyboard */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E554C19F29C058EF00053C44 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E554C1A029C058FD00053C44 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				E50E5BE929C06A4800535AA3 /* CharmButton.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		E554C1A129C0591D00053C44 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E554C18E29C0557F00053C44 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E554C1A229C05BB600053C44 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E554C1A329C05BCF00053C44 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E554C1A829C05D2800053C44 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +193,10 @@
 			dependencies = (
 			);
 			name = CharmAI;
+			packageProductDependencies = (
+				E554C1A629C05C6400053C44 /* SnapKit */,
+				E50E5BF129C074CE00535AA3 /* Hero */,
+			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +225,10 @@
 				Base,
 			);
 			mainGroup = E554C17629C0557D00053C44;
+			packageReferences = (
+				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
+			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,10 +255,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E554C18729C0557E00053C44 /* ViewController.swift in Sources */,
+				E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */,
+				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,
+				E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */,
 				E554C18D29C0557E00053C44 /* CharmAI.xcdatamodeld in Sources */,
+				E50E5BEA29C06A4800535AA3 /* CharmButton.swift in Sources */,
+				E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */,
+				E5BC03FB29C07F9A00C38E42 /* PageViewController.swift in Sources */,
 				E554C18329C0557E00053C44 /* AppDelegate.swift in Sources */,
 				E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */,
+				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UH5437SQWZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CharmAI/Info.plist;
+				INFOPLIST_FILE = CharmAI/App/Plists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -308,7 +432,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UH5437SQWZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CharmAI/Info.plist;
+				INFOPLIST_FILE = CharmAI/App/Plists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -348,6 +472,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+		E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E50E5BF129C074CE00535AA3 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+		E554C1A629C05C6400053C44 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E554C18B29C0557E00053C44 /* CharmAI.xcdatamodeld */ = {

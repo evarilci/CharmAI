@@ -41,7 +41,7 @@ final class OnboardingCell: UICollectionViewCell {
         label.text = "Ask the bot anything, It's always ready to help!"
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.textColor = .white
+         label.textColor = .labelColor
         return label
     }()
     

@@ -22,6 +22,7 @@ struct K {
         static let titleIcon = "ChatGPT"
         static let refresh = "icon _refresh"
         static let sendButton = "icon_send_selected"
+        static let emptySendButton = "icon_send_unselected"
         
     }
 }

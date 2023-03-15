@@ -10,4 +10,5 @@ import UIKit
 extension UIColor {
     static let accentColor = UIColor(named: "AccentColor")
     static let receivedMessage = UIColor(named: "receivedMessage")
+    static let labelColor = UIColor(named: "labelColor")
 }

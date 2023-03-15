@@ -32,7 +32,7 @@ class ChatCell: UITableViewCell {
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.text = "Message"
-        textView.textColor = .white
+        textView.textColor = .labelColor
         
         return textView
     }()

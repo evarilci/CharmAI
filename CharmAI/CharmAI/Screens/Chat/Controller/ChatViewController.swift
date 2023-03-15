@@ -33,10 +33,14 @@ final class ChatViewController: UIViewController {
     func setupUI() {
         let button = UIBarButtonItem(image: UIImage(named: K.Images.settings)!, style: .done, target: self, action: #selector(goSettings))
         let refresh = UIBarButtonItem(image: UIImage(named: K.Images.refresh)!, style: .done, target: self, action: #selector(refresh))
+        
+       
+       
+        
+        
         navigationItem.rightBarButtonItem = button
         navigationItem.leftBarButtonItem = refresh
         navigationItem.titleView = BarView()
-        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
@@ -44,6 +48,7 @@ final class ChatViewController: UIViewController {
         tableView.rowHeight = 60
     }
     override var inputAccessoryView: UIView? {
+        
         get { return chatInputView }
     }
   

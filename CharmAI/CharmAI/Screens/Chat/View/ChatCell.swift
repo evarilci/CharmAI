@@ -32,7 +32,7 @@ class ChatCell: UITableViewCell {
        
    }()
     
-    private let textView : UITextView = {
+     let textView : UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
@@ -75,14 +75,15 @@ class ChatCell: UITableViewCell {
         }
         
         textView.snp.makeConstraints { make in
-            make.top.equalTo(messageContainer.snp.top)
-            make.bottom.equalTo(messageContainer.snp.bottom)
-            make.leading.equalTo(messageContainer.snp.leading).offset(3)
-            make.trailing.equalTo(messageContainer.snp.trailing)
+            make.center.equalTo(messageContainer.snp.center)
+//            make.leading.equalTo(messageContainer.snp.leading).offset(3)
+//            make.trailing.equalTo(messageContainer.snp.trailing)
+            make.height.equalTo(messageContainer.snp.height)
+            make.width.equalTo(messageContainer.snp.width)
             
         }
         
-        messageContainer.layer.cornerRadius = self.frame.size.height / 2
+        messageContainer.layer.cornerRadius = self.frame.height / 3
         messageContainer.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
       
         iconView.layer.cornerRadius = 25 / 2
@@ -93,6 +94,7 @@ class ChatCell: UITableViewCell {
         let ViewModel = ChatViewModel(chat: chat)
         messageContainer.backgroundColor = ViewModel.chatBackgroundColor
         iconView.isHidden = ViewModel.isCurrentUser
+        self.textView.text = chat.message
         
         if ViewModel.isCurrentUser {
             messageContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMinXMinYCorner]

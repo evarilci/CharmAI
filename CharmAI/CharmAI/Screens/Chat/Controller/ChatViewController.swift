@@ -9,7 +9,7 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     let tableView = UITableView()
-    var messages = [Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970 ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970 ])]
+    var messages = [Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is my prompt" ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is ai message" ]), Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my prompt" ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai message"])]
    
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
     
@@ -22,6 +22,7 @@ final class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(ChatCell.self, forCellReuseIdentifier: K.HomeScreenCellIdentifier)
         tableView.backgroundColor = .black
+        tableView.separatorStyle = .none
        
     }
     
@@ -47,7 +48,9 @@ final class ChatViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
-        tableView.rowHeight = 70
+        //tableView.rowHeight = 60
+       // tableView.estimatedRowHeight = UITableView.automaticDimension
+        
     }
     override var inputAccessoryView: UIView? {
         
@@ -61,6 +64,14 @@ final class ChatViewController: UIViewController {
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return .init(100)
+//
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -69,15 +80,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HomeScreenCellIdentifier, for: indexPath) as! ChatCell
         
         cell.chat = messages[indexPath.row]
+        cell.layoutIfNeeded()
+       
+     
         
-        
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }
+    
+    
 }
-
-
-    
-    
-

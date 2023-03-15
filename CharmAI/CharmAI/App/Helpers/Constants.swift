@@ -23,6 +23,7 @@ struct K {
         static let refresh = "icon _refresh"
         static let sendButton = "icon_send_selected"
         static let emptySendButton = "icon_send_unselected"
+        static let iconImage = "Ellipse 3"
         
     }
 }

@@ -19,6 +19,7 @@ class ChatCell: UITableViewCell {
          let iv = UIImageView()
          iv.contentMode = .scaleAspectFill
          iv.backgroundColor = .systemGray6
+         iv.image = UIImage(named: K.Images.iconImage)
          iv.clipsToBounds = true
          return iv
     }()

@@ -26,7 +26,6 @@
 		E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB729C0D0BF00155608 /* ChatInputView.swift */; };
 		E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */; };
 		E58B6FE329C1B3D400207257 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FE229C1B3D300207257 /* Chat.swift */; };
-		E58B6FE629C1E42A00207257 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = E58B6FE529C1E42A00207257 /* OpenAIKit */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 			files = (
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
-				E58B6FE629C1E42A00207257 /* OpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +265,6 @@
 			packageProductDependencies = (
 				E554C1A629C05C6400053C44 /* SnapKit */,
 				E50E5BF129C074CE00535AA3 /* Hero */,
-				E58B6FE529C1E42A00207257 /* OpenAIKit */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -300,7 +297,6 @@
 			packageReferences = (
 				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
-				E58B6FE429C1E42A00207257 /* XCRemoteSwiftPackageReference "openai-kit" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -570,14 +566,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		E58B6FE429C1E42A00207257 /* XCRemoteSwiftPackageReference "openai-kit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dylanshine/openai-kit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -590,11 +578,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		E58B6FE529C1E42A00207257 /* OpenAIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E58B6FE429C1E42A00207257 /* XCRemoteSwiftPackageReference "openai-kit" */;
-			productName = OpenAIKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

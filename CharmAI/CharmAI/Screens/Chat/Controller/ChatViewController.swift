@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class ChatViewController: UIViewController {
     let tableView = UITableView()
     var messages = [Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is my prompt" ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is ai message" ]), Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my promptThis is my prompt" ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970, "message": "This is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai messageThis is ai message"])]

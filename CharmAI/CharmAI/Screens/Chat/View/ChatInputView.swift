@@ -10,14 +10,12 @@ import UIKit
 class ChatInputView: UIView {
     // MARK: PROPERTIES
     
-     let textView : UITextView = {
+    let textView : UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .black
         textView.isScrollEnabled = true
         textView.isEditable = true
         textView.textColor = .labelColor
-         
-        
         return textView
     }()
     
@@ -29,12 +27,13 @@ class ChatInputView: UIView {
         return label
     }()
     
-     let sendButton : UIButton = {
+    let sendButton : UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named:K.Images.emptySendButton), for: .normal)
         return button
     }()
     
+    //MARK: INIT
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
@@ -57,9 +56,6 @@ class ChatInputView: UIView {
         addSubview(placeholderLabel)
         autoresizingMask = .flexibleHeight
         NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: UITextView.textDidChangeNotification, object: nil)
-        print("HAS TEXT? \(textView.hasText)")
-        
-        
         
         sendButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
@@ -86,5 +82,4 @@ class ChatInputView: UIView {
             
         }
     }
-    
 }

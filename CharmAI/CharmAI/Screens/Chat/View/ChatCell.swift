@@ -76,8 +76,6 @@ class ChatCell: UITableViewCell {
         
         textView.snp.makeConstraints { make in
             make.center.equalTo(messageContainer.snp.center)
-//            make.leading.equalTo(messageContainer.snp.leading).offset(3)
-//            make.trailing.equalTo(messageContainer.snp.trailing)
             make.height.equalTo(messageContainer.snp.height)
             make.width.equalTo(messageContainer.snp.width)
             

@@ -24,6 +24,8 @@
 		E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB329C0BFDF00155608 /* ChatCell.swift */; };
 		E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB529C0C3B200155608 /* UIView+Extension.swift */; };
 		E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB729C0D0BF00155608 /* ChatInputView.swift */; };
+		E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */; };
+		E58B6FE329C1B3D400207257 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FE229C1B3D300207257 /* Chat.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		E57EECB329C0BFDF00155608 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		E57EECB529C0C3B200155608 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E57EECB729C0D0BF00155608 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		E58B6FE229C1B3D300207257 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +204,8 @@
 		E556158B29C0B72000A99043 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				E58B6FE129C1B3C500207257 /* ChatModel */,
+				E58B6FDE29C1B3A600207257 /* ViewModel */,
 				E57EECB229C0BFCF00155608 /* View */,
 				E57EECB129C0BFC800155608 /* Controller */,
 				E57EECAF29C0BD0700155608 /* barView.swift */,
@@ -222,6 +228,22 @@
 				E57EECB729C0D0BF00155608 /* ChatInputView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E58B6FDE29C1B3A600207257 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E58B6FE129C1B3C500207257 /* ChatModel */ = {
+			isa = PBXGroup;
+			children = (
+				E58B6FE229C1B3D300207257 /* Chat.swift */,
+			);
+			path = ChatModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +330,7 @@
 				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,
 				E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */,
 				E57EECB029C0BD0700155608 /* barView.swift in Sources */,
+				E58B6FE329C1B3D400207257 /* Chat.swift in Sources */,
 				E554C18D29C0557E00053C44 /* CharmAI.xcdatamodeld in Sources */,
 				E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */,
 				E50E5BEA29C06A4800535AA3 /* CharmButton.swift in Sources */,
@@ -316,6 +339,7 @@
 				E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */,
 				E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */,
 				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
+				E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */,
 				E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

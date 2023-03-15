@@ -15,7 +15,6 @@ class ChatInputView: UIView {
         textView.backgroundColor = .black
         textView.isScrollEnabled = true
         textView.isEditable = true
-        
         textView.textColor = .labelColor
          
         
@@ -56,6 +55,7 @@ class ChatInputView: UIView {
         addSubview(textView)
         addSubview(sendButton)
         addSubview(placeholderLabel)
+        autoresizingMask = .flexibleHeight
         NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: UITextView.textDidChangeNotification, object: nil)
         print("HAS TEXT? \(textView.hasText)")
         
@@ -64,7 +64,10 @@ class ChatInputView: UIView {
         sendButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview { view in
+                view.safeAreaLayoutGuide
+            }
+            make.width.equalTo(sendButton.snp.height)
         }
         
         textView.snp.makeConstraints { make in

@@ -9,6 +9,12 @@ import UIKit
 
 class ChatCell: UITableViewCell {
     
+    var chat : Chat?{
+        didSet {
+            configure()
+        }
+    }
+    
      private let iconView : UIImageView = {
          let iv = UIImageView()
          iv.contentMode = .scaleAspectFill
@@ -63,9 +69,9 @@ class ChatCell: UITableViewCell {
         
         messageContainer.snp.makeConstraints { make in
             make.leading.equalTo(iconView.snp.trailing).offset(4)
-            make.top.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().inset(4)
-            make.bottom.equalToSuperview().offset(-8)
+            make.top.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().multipliedBy(0.5)
+            make.bottom.equalToSuperview().offset(-12)
         }
         
         textView.snp.makeConstraints { make in
@@ -82,4 +88,21 @@ class ChatCell: UITableViewCell {
         iconView.layer.cornerRadius = 25 / 2
     }
     
+    private func configure() {
+        guard let chat = self.chat else {return}
+        let ViewModel = ChatViewModel(chat: chat)
+        messageContainer.backgroundColor = ViewModel.chatBackgroundColor
+        iconView.isHidden = ViewModel.isCurrentUser
+        
+        if ViewModel.isCurrentUser {
+            messageContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMinXMinYCorner]
+            messageContainer.snp.remakeConstraints { make in
+                           make.leading.equalTo(self.snp.centerX)
+                           make.top.equalToSuperview().offset(6)
+                           make.trailing.equalToSuperview().offset(-5)
+                           make.bottom.equalToSuperview().offset(-12)
+                       }
+            layoutIfNeeded()
+        }
+    }
 }

@@ -11,7 +11,7 @@ class CharmButton: UIButton {
     
     override open var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .accentColor?.withAlphaComponent(0.85) : .accentColor
+            backgroundColor = isHighlighted ? .accentColor.withAlphaComponent(0.85) : .accentColor
         }
     }
     

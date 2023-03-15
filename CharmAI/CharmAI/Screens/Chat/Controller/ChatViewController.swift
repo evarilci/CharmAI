@@ -9,7 +9,8 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     let tableView = UITableView()
-  
+    var messages = [Chat(data: ["isSender" : true, "id" : UUID(), "date" : Date().timeIntervalSince1970 ]), Chat(data: ["isSender" : false, "id" : UUID(), "date" : Date().timeIntervalSince1970 ])]
+   
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
     
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ final class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(ChatCell.self, forCellReuseIdentifier: K.HomeScreenCellIdentifier)
         tableView.backgroundColor = .black
+       
     }
     
     @objc func goSettings() {
@@ -45,7 +47,7 @@ final class ChatViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
-        tableView.rowHeight = 60
+        tableView.rowHeight = 70
     }
     override var inputAccessoryView: UIView? {
         
@@ -60,15 +62,22 @@ final class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HomeScreenCellIdentifier, for: indexPath) as! ChatCell
+        
+        cell.chat = messages[indexPath.row]
+        
         
         
         
         return cell
     }
 }
+
+
+    
+    
 

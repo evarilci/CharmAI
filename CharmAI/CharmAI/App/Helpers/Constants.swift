@@ -24,6 +24,15 @@ struct K {
         static let sendButton = "icon_send_selected"
         static let emptySendButton = "icon_send_unselected"
         static let iconImage = "Ellipse 3"
+        static let weekly = "Weekly"
+        static let monthly = "Monthly"
+        static let annualy = "Annual"
+        
+        
+    }
+    
+    struct Icons {
+        static let lock = "icon_lock"
         
     }
 }

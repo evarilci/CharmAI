@@ -29,6 +29,7 @@ class CharmButton: UIButton {
     func setButton(title: String) {
         self.backgroundColor = .accentColor
         self.setTitle(title, for: .normal)
+        self.titleLabel?.font = UIFont(name: "Inter", size: 20)
         self.layer.cornerRadius = 15
      
     }

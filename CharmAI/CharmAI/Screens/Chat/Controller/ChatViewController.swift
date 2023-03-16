@@ -9,19 +9,15 @@ import UIKit
 
 
 final class ChatViewController: UIViewController {
+    //MARK: PROPERTIES
     let tableView = UITableView()
-    
-  
     let viewModel = ChatViewModel()
-    
-     
-   
-   
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
     
+    //MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .blackBackgroundColor
         self.navigationItem.hidesBackButton = true
         setupUI()
         tableView.delegate = self
@@ -32,7 +28,7 @@ final class ChatViewController: UIViewController {
         viewModel.delegate = self
        
     }
-    
+    //MARK: BUTTON METHODS
     @objc func goSettings() {
         print("settings")
     }
@@ -40,11 +36,12 @@ final class ChatViewController: UIViewController {
         print("refresh")
     }
     
+    
+    //MARK: UI METHOD
     func setupUI() {
         let button = UIBarButtonItem(image: UIImage(named: K.Images.settings)!, style: .done, target: self, action: #selector(goSettings))
         let refresh = UIBarButtonItem(image: UIImage(named: K.Images.refresh)!, style: .done, target: self, action: #selector(refresh))
-        
- 
+     
         navigationItem.rightBarButtonItem = button
         navigationItem.leftBarButtonItem = refresh
         navigationItem.titleView = BarView()
@@ -55,6 +52,8 @@ final class ChatViewController: UIViewController {
       
         
     }
+    
+    //MARK: BOTTOM ACCESORY VIEW
     override var inputAccessoryView: UIView? {
         
         get { return chatInputView }
@@ -65,15 +64,8 @@ final class ChatViewController: UIViewController {
     }
     
 }
-
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return .init(100)
-//
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
@@ -91,7 +83,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
-
+//MARK: VIEWMODEL DELEGATE
 extension ChatViewController: ViewModelDelegate {
     
 }

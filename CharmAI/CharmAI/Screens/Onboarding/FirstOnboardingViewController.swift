@@ -36,7 +36,7 @@ class FirstOnboardingViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         pageControll.numberOfPages = slides.count
-        view.backgroundColor = .black
+        view.backgroundColor = .blackBackgroundColor
        
    
        

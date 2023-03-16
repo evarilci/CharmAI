@@ -4,6 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-Bold.ttf</string>
 		<string>Inter.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

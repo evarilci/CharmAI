@@ -26,6 +26,7 @@
 		E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB729C0D0BF00155608 /* ChatInputView.swift */; };
 		E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */; };
 		E58B6FE329C1B3D400207257 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6FE229C1B3D300207257 /* Chat.swift */; };
+		E5B8AB9F29C30BBD00D99B7A /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8AB9E29C30BBC00D99B7A /* InAppViewController.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		E57EECB729C0D0BF00155608 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		E58B6FDF29C1B3BB00207257 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		E58B6FE229C1B3D300207257 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		E5B8AB9E29C30BBC00D99B7A /* InAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 		E554C19A29C058C400053C44 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E5B8AB9D29C30BA200D99B7A /* InApp */,
 				E556158B29C0B72000A99043 /* Chat */,
 				E556157429C0B2A700A99043 /* Fonts */,
 				E50E5BED29C071AB00535AA3 /* Onboarding */,
@@ -246,6 +249,14 @@
 			path = ChatModel;
 			sourceTree = "<group>";
 		};
+		E5B8AB9D29C30BA200D99B7A /* InApp */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8AB9E29C30BBC00D99B7A /* InAppViewController.swift */,
+			);
+			path = InApp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B8AB9F29C30BBD00D99B7A /* InAppViewController.swift in Sources */,
 				E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */,
 				E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */,
 				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,

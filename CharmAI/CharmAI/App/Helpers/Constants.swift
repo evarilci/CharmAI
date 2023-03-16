@@ -32,7 +32,7 @@ struct K {
         static let selectedAnnual = "selectedAnnual"
         static let termsofuse = "termsofuse"
         static let cross = "icon_close"
-        
+        static let goPremium = "goPremium"
         
     }
     

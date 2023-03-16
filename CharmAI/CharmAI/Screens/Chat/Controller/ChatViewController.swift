@@ -37,7 +37,8 @@ final class ChatViewController: UIViewController {
     }
     //MARK: BUTTON METHODS
     @objc func goSettings() {
-     
+     let vc = SettingsViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func refresh() {
         print("refresh")
@@ -101,15 +102,19 @@ extension ChatViewController: ViewModelDelegate {
 extension ChatViewController : ChatInputDelegate {
     func inputView(_ view: ChatInputView, input: String) {
         self.chatInputView.sendAction = { [self] in
-            viewModel.getResponse(input: input) { result in
-                switch result {
-                case .success(let model):
-                    print(model)
-                case.failure(let error):
-                    print(error)
-                    
+            self.view.endEditing(true)
+            DispatchQueue.main.async {
+                self.viewModel.getResponse(input: input) { result in
+                    switch result {
+                    case .success(let model):
+                        print(model)
+                    case.failure(let error):
+                        print(error)
+                        
+                    }
                 }
             }
+           
         }
     }
     

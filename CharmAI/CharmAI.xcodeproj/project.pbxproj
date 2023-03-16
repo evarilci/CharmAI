@@ -30,6 +30,8 @@
 		E5B8ABA129C327DA00D99B7A /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B8ABA029C327DA00D99B7A /* Inter-Bold.ttf */; };
 		E5B8ABA329C327E200D99B7A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B8ABA229C327E100D99B7A /* Inter-Medium.ttf */; };
 		E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABA529C35E9F00D99B7A /* OpenAISwift */; };
+		E5B8ABAB29C38C9300D99B7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */; };
+		E5B8ABAE29C3A91100D99B7A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,7 @@
 		E5B8AB9E29C30BBC00D99B7A /* InAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		E5B8ABA029C327DA00D99B7A /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		E5B8ABA229C327E100D99B7A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
+				E5B8ABAE29C3A91100D99B7A /* IQKeyboardManagerSwift in Frameworks */,
 				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
@@ -114,11 +118,11 @@
 		E554C19929C058B800053C44 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E556157429C0B2A700A99043 /* Fonts */,
 				E554C1A829C05D2800053C44 /* Extensions */,
 				E554C1A229C05BB600053C44 /* Helpers */,
 				E554C1A129C0591D00053C44 /* Assets */,
 				E554C1A029C058FD00053C44 /* ReusableViews */,
-				E554C19F29C058EF00053C44 /* Network */,
 				E554C19E29C058E800053C44 /* Base */,
 				E554C19D29C058E200053C44 /* Plists */,
 				E554C19B29C058CE00053C44 /* Delegates */,
@@ -129,9 +133,9 @@
 		E554C19A29C058C400053C44 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E5B8ABA929C38C7B00D99B7A /* Settings */,
 				E5B8AB9D29C30BA200D99B7A /* InApp */,
 				E556158B29C0B72000A99043 /* Chat */,
-				E556157429C0B2A700A99043 /* Fonts */,
 				E50E5BED29C071AB00535AA3 /* Onboarding */,
 			);
 			path = Screens;
@@ -160,13 +164,6 @@
 				E554C19029C0557F00053C44 /* LaunchScreen.storyboard */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		E554C19F29C058EF00053C44 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		E554C1A029C058FD00053C44 /* ReusableViews */ = {
@@ -265,6 +262,14 @@
 			path = InApp;
 			sourceTree = "<group>";
 		};
+		E5B8ABA929C38C7B00D99B7A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +290,7 @@
 				E554C1A629C05C6400053C44 /* SnapKit */,
 				E50E5BF129C074CE00535AA3 /* Hero */,
 				E5B8ABA529C35E9F00D99B7A /* OpenAISwift */,
+				E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -318,6 +324,7 @@
 				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
 				E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -365,6 +372,7 @@
 				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
 				E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */,
 				E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */,
+				E5B8ABAB29C38C9300D99B7A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +606,15 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 10.0.0;
+				minimumVersion = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -615,6 +632,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -55,6 +55,7 @@ class ChatInputView: UIView {
         sendAction?()
         guard let input = textView.text else { return }
         delegate?.inputView(self, input: input)
+        textView.text = ""
     }
     
     @objc func handleButton() {

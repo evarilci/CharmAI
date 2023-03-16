@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatCell: UITableViewCell {
+final class ChatCell: UITableViewCell {
     
     var chat : Chat?{
         didSet {
@@ -15,31 +15,31 @@ class ChatCell: UITableViewCell {
         }
     }
     
-     private let iconView : UIImageView = {
-         let iv = UIImageView()
-         iv.contentMode = .scaleAspectFill
-         iv.backgroundColor = .systemGray6
-         iv.image = UIImage(named: K.Images.iconImage)
-         iv.clipsToBounds = true
-         return iv
+    private let iconView : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.backgroundColor = .systemGray6
+        iv.image = UIImage(named: K.Images.iconImage)
+        iv.clipsToBounds = true
+        return iv
     }()
     
     
     var messageContainer : UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .receivedMessage
         view.clipsToBounds = true
-       return view
-       
-   }()
+        return view
+        
+    }()
     
-     let textView : UITextView = {
+    let textView : UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.text = "Message"
-         textView.font = UIFont(name: "Inter", size: 15)
+        textView.font = UIFont(name: "Inter", size: 14)
         textView.textColor = .labelColor
         
         return textView
@@ -51,7 +51,6 @@ class ChatCell: UITableViewCell {
         backgroundColor = .black
         setupUI()
         
-     
     }
     
     required init?(coder: NSCoder) {
@@ -77,7 +76,7 @@ class ChatCell: UITableViewCell {
         }
         
         textView.snp.makeConstraints { make in
-
+            
             make.top.equalTo(messageContainer.snp.top)
             make.leading.equalTo(messageContainer.snp.leading)
             make.trailing.equalTo(messageContainer.snp.trailing)
@@ -87,7 +86,7 @@ class ChatCell: UITableViewCell {
         
         messageContainer.layer.cornerRadius = self.frame.height / 3
         messageContainer.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
-      
+        
         iconView.layer.cornerRadius = 25 / 2
     }
     
@@ -95,16 +94,16 @@ class ChatCell: UITableViewCell {
         
         messageContainer.backgroundColor = chat.isSender ? .accentColor : .receivedMessage
         iconView.isHidden = chat.isSender
-
+        
         self.textView.text = chat.message
         if chat.isSender {
             messageContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMinXMinYCorner]
             messageContainer.snp.remakeConstraints { make in
-                           make.leading.equalTo(self.snp.centerX)
-                           make.top.equalToSuperview().offset(6)
-                           make.trailing.equalToSuperview().offset(-5)
-                           make.bottom.equalToSuperview().offset(-12)
-                       }
+                make.leading.equalTo(self.snp.centerX)
+                make.top.equalToSuperview().offset(6)
+                make.trailing.equalToSuperview().offset(-5)
+                make.bottom.equalToSuperview().offset(-12)
+            }
             layoutIfNeeded()
         }
     }

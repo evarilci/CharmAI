@@ -11,7 +11,7 @@ class ChatCell: UITableViewCell {
     
     var chat : Chat?{
         didSet {
-            configure()
+            configure(chat: chat!)
         }
     }
     
@@ -88,14 +88,13 @@ class ChatCell: UITableViewCell {
         iconView.layer.cornerRadius = 25 / 2
     }
     
-    private func configure() {
-        guard let chat = self.chat else {return}
-        let ViewModel = ChatViewModel(chat: chat)
-        messageContainer.backgroundColor = ViewModel.chatBackgroundColor
-        iconView.isHidden = ViewModel.isCurrentUser
-        self.textView.text = chat.message
+    private func configure(chat: Chat) {
         
-        if ViewModel.isCurrentUser {
+        messageContainer.backgroundColor = chat.isSender ? .accentColor : .receivedMessage
+        iconView.isHidden = chat.isSender
+
+        self.textView.text = chat.message
+        if chat.isSender {
             messageContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMinXMinYCorner]
             messageContainer.snp.remakeConstraints { make in
                            make.leading.equalTo(self.snp.centerX)

@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol ChatInputDelegate : AnyObject {
+    func inputView(_ view: ChatInputView, input: String )
+}
+
 class ChatInputView: UIView {
     // MARK: PROPERTIES
+    weak var delegate : ChatInputDelegate?
     
     var sendAction : (() -> Void)? = nil
     
-    let textView : UITextView = {
+       let textView : UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .black
         textView.isScrollEnabled = true
@@ -48,6 +53,8 @@ class ChatInputView: UIView {
     }
     @objc func sendButtonAction() {
         sendAction?()
+        guard let input = textView.text else { return }
+        delegate?.inputView(self, input: input)
     }
     
     @objc func handleButton() {

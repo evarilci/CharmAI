@@ -13,8 +13,13 @@ final class ChatViewController: UIViewController {
     //MARK: PROPERTIES
     let tableView = UITableView()
     let viewModel = ChatViewModel()
-    private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
-   
+    private lazy var chatInputView : ChatInputView = {
+        let iv = ChatInputView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 65))
+        
+       
+        return iv
+    }()
+    
     
     //MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -28,33 +33,20 @@ final class ChatViewController: UIViewController {
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         viewModel.delegate = self
+        chatInputView.delegate = self
     }
     //MARK: BUTTON METHODS
     @objc func goSettings() {
-        
-        
+     
     }
     @objc func refresh() {
         print("refresh")
     }
-    
-    
     //MARK: UI METHOD
     func setupUI() {
         let button = UIBarButtonItem(image: UIImage(named: K.Images.settings)!, style: .done, target: self, action: #selector(goSettings))
         let refresh = UIBarButtonItem(image: UIImage(named: K.Images.refresh)!, style: .done, target: self, action: #selector(refresh))
-        guard let input = chatInputView.textView.text else {return}
-        self.chatInputView.sendAction = { [self] in
-            viewModel.getResponse(input: "hello") { result in
-                switch result {
-                case .success(let model):
-                    print(model)
-                case.failure(let error):
-                    print(error)
-                    
-                }
-            }
-        }
+      
         navigationItem.rightBarButtonItem = button
         navigationItem.leftBarButtonItem = refresh
         navigationItem.titleView = BarView()
@@ -63,7 +55,6 @@ final class ChatViewController: UIViewController {
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-50)
         }
-      
         
     }
     
@@ -72,7 +63,7 @@ final class ChatViewController: UIViewController {
         
         get { return chatInputView }
     }
-  
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -105,4 +96,21 @@ extension ChatViewController: ViewModelDelegate {
         }
         
     }
+}
+
+extension ChatViewController : ChatInputDelegate {
+    func inputView(_ view: ChatInputView, input: String) {
+        self.chatInputView.sendAction = { [self] in
+            viewModel.getResponse(input: input) { result in
+                switch result {
+                case .success(let model):
+                    print(model)
+                case.failure(let error):
+                    print(error)
+                    
+                }
+            }
+        }
+    }
+    
 }

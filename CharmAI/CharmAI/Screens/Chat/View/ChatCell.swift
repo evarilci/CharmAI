@@ -39,6 +39,7 @@ class ChatCell: UITableViewCell {
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.text = "Message"
+         textView.font = UIFont(name: "Inter", size: 15)
         textView.textColor = .labelColor
         
         return textView
@@ -76,9 +77,7 @@ class ChatCell: UITableViewCell {
         }
         
         textView.snp.makeConstraints { make in
-//            make.center.equalTo(messageContainer.snp.center)
-//            make.height.equalTo(messageContainer.snp.height)
-//            make.width.equalTo(messageContainer.snp.width)
+
             make.top.equalTo(messageContainer.snp.top)
             make.leading.equalTo(messageContainer.snp.leading)
             make.trailing.equalTo(messageContainer.snp.trailing)

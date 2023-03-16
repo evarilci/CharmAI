@@ -60,7 +60,7 @@ class ChatCell: UITableViewCell {
     func setupUI() {
         addSubview(iconView)
         addSubview(messageContainer)
-        addSubview(textView)
+        messageContainer.addSubview(textView)
         
         iconView.snp.makeConstraints { make in
             make.width.height.equalTo(25)
@@ -76,9 +76,13 @@ class ChatCell: UITableViewCell {
         }
         
         textView.snp.makeConstraints { make in
-            make.center.equalTo(messageContainer.snp.center)
-            make.height.equalTo(messageContainer.snp.height)
-            make.width.equalTo(messageContainer.snp.width)
+//            make.center.equalTo(messageContainer.snp.center)
+//            make.height.equalTo(messageContainer.snp.height)
+//            make.width.equalTo(messageContainer.snp.width)
+            make.top.equalTo(messageContainer.snp.top)
+            make.leading.equalTo(messageContainer.snp.leading)
+            make.trailing.equalTo(messageContainer.snp.trailing)
+            make.bottom.equalTo(messageContainer.snp.bottom)
             
         }
         

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import OpenAISwift
+
 
 
 final class ChatViewController: UIViewController {
@@ -14,7 +14,7 @@ final class ChatViewController: UIViewController {
     let tableView = UITableView()
     let viewModel = ChatViewModel()
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
-    private var client = OpenAISwift(authToken: K.APIKey)
+   
     
     //MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -28,24 +28,11 @@ final class ChatViewController: UIViewController {
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         viewModel.delegate = self
-        
-       
-        
-       
     }
     //MARK: BUTTON METHODS
     @objc func goSettings() {
         
-        client.sendCompletion(with: "write me an essay about dolphins",maxTokens: 1000, temperature: 1,  completionHandler: { result in
-            switch result {
-            case .success(let model):
-                let output = model.choices.first?.text ?? "hello"
-              print(output)
-            case .failure(let error):
-                print(error)
-                
-            }
-        })
+        
     }
     @objc func refresh() {
         print("refresh")
@@ -56,13 +43,25 @@ final class ChatViewController: UIViewController {
     func setupUI() {
         let button = UIBarButtonItem(image: UIImage(named: K.Images.settings)!, style: .done, target: self, action: #selector(goSettings))
         let refresh = UIBarButtonItem(image: UIImage(named: K.Images.refresh)!, style: .done, target: self, action: #selector(refresh))
-     
+        guard let input = chatInputView.textView.text else {return}
+        self.chatInputView.sendAction = { [self] in
+            viewModel.getResponse(input: "hello") { result in
+                switch result {
+                case .success(let model):
+                    print(model)
+                case.failure(let error):
+                    print(error)
+                    
+                }
+            }
+        }
         navigationItem.rightBarButtonItem = button
         navigationItem.leftBarButtonItem = refresh
         navigationItem.titleView = BarView()
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
         }
       
         
@@ -100,5 +99,10 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 }
 //MARK: VIEWMODEL DELEGATE
 extension ChatViewController: ViewModelDelegate {
-    
+    func responseSuccess() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
 }

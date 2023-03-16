@@ -10,12 +10,15 @@ import UIKit
 class ChatInputView: UIView {
     // MARK: PROPERTIES
     
+    var sendAction : (() -> Void)? = nil
+    
     let textView : UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .black
         textView.isScrollEnabled = true
         textView.isEditable = true
         textView.textColor = .labelColor
+        textView.autocorrectionType = .no
         return textView
     }()
     
@@ -43,6 +46,9 @@ class ChatInputView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    @objc func sendButtonAction() {
+        sendAction?()
+    }
     
     @objc func handleButton() {
         
@@ -56,7 +62,7 @@ class ChatInputView: UIView {
         addSubview(placeholderLabel)
         autoresizingMask = .flexibleHeight
         NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: UITextView.textDidChangeNotification, object: nil)
-        
+        sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         sendButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()

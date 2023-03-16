@@ -29,6 +29,7 @@
 		E5B8AB9F29C30BBD00D99B7A /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8AB9E29C30BBC00D99B7A /* InAppViewController.swift */; };
 		E5B8ABA129C327DA00D99B7A /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B8ABA029C327DA00D99B7A /* Inter-Bold.ttf */; };
 		E5B8ABA329C327E200D99B7A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B8ABA229C327E100D99B7A /* Inter-Medium.ttf */; };
+		E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABA529C35E9F00D99B7A /* OpenAISwift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
+				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +284,7 @@
 			packageProductDependencies = (
 				E554C1A629C05C6400053C44 /* SnapKit */,
 				E50E5BF129C074CE00535AA3 /* Hero */,
+				E5B8ABA529C35E9F00D99B7A /* OpenAISwift */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -314,6 +317,7 @@
 			packageReferences = (
 				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
+				E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -586,6 +590,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -598,6 +610,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		E5B8ABA529C35E9F00D99B7A /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

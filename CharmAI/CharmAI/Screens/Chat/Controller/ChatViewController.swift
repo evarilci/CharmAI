@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OpenAISwift
 
 
 final class ChatViewController: UIViewController {
@@ -13,6 +14,7 @@ final class ChatViewController: UIViewController {
     let tableView = UITableView()
     let viewModel = ChatViewModel()
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 65))
+    private var client = OpenAISwift(authToken: K.APIKey)
     
     //MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -26,11 +28,24 @@ final class ChatViewController: UIViewController {
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         viewModel.delegate = self
+        
+       
+        
        
     }
     //MARK: BUTTON METHODS
     @objc func goSettings() {
-        print("settings")
+        
+        client.sendCompletion(with: "write me an essay about dolphins",maxTokens: 1000, temperature: 1,  completionHandler: { result in
+            switch result {
+            case .success(let model):
+                let output = model.choices.first?.text ?? "hello"
+              print(output)
+            case .failure(let error):
+                print(error)
+                
+            }
+        })
     }
     @objc func refresh() {
         print("refresh")

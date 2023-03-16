@@ -11,7 +11,7 @@ import Foundation
 struct K {
     
     static let HomeScreenCellIdentifier = "onboardingCell"
-    
+    static let APIKey = "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"
     
     struct Images {
         static let onboardingImage1 = "Group 1171274876"

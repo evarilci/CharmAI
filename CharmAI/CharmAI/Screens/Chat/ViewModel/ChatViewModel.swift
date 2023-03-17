@@ -35,8 +35,9 @@ class ChatViewModel: ViewModelProtocol {
     }
 
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
+        self.messages.removeAll()
         let sender = Chat(data: ["isSender" : true, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": input])
-    //    self.saveChat(chate: sender)
+        self.saveChat(chate: sender)
         self.messages.append(sender)
         client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { result in
             switch result {
@@ -44,7 +45,7 @@ class ChatViewModel: ViewModelProtocol {
                 let output = model.choices.first?.text ?? "hello"
                 let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
                 let chat = Chat(data: ["isSender" : false, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
-             //   self.saveChat(chate: chat)
+                self.saveChat(chate: chat)
                 self.messages.append(chat)
                 completion(.success(newOutput))
                 
@@ -57,29 +58,52 @@ class ChatViewModel: ViewModelProtocol {
     
     func saveChat(chate: Chat) {
         
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
-        let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatEntity", into: context)
-        chat.setValue(chate.message, forKey: "message")
-        chat.setValue(chate.messageID, forKey: "id")
-       // chat.setValue(chate.date, forKey: "date")
-        chat.setValue(chate.isSender, forKey: "isSender")
-        
-        
-        
-//        for i in chate {
-//            chat.setValue(i.message, forKey: "message")
-//            chat.setValue(i.messageID, forKey: "id")
-//            chat.setValue(i.date, forKey: "date")
-//            chat.setValue(i.isSender, forKey: "isSender")
-//        }
+        let fetchRequest: NSFetchRequest<ChatEntity> = ChatEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "message == %@", chate.message)
         do {
+            let existingChats = try context.fetch(fetchRequest)
+            if let existingChat = existingChats.first {
+                // A ChatEntity object with the same message already exists
+                print("Chat already exists with message: \(existingChat.message ?? "")")
+                return
+            }
+            // Insert a new ChatEntity object with the provided chat data
+            let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatEntity", into: context) as! ChatEntity
+            chat.message = chate.message
+            chat.id = chate.messageID
+            chat.isSender = chate.isSender
+          //  chat.date = chate.date
             try context.save()
-            print("success")
+            print("Chat saved successfully")
         } catch {
-            print(error.localizedDescription)
+            print("Error saving chat: \(error.localizedDescription)")
         }
 
+        
+        
+        
+        
+        
+        
+        
+//
+//        let delegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = delegate.persistentContainer.viewContext
+//        let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatEntity", into: context)
+//        chat.setValue(chate.message, forKey: "message")
+//        chat.setValue(chate.messageID, forKey: "id")
+//       // chat.setValue(chate.date, forKey: "date")
+//        chat.setValue(chate.isSender, forKey: "isSender")
+//
+//        do {
+//            try context.save()
+//            print("success")
+//        } catch {
+//            print(error.localizedDescription)
+//        }
 
     }
     
@@ -117,4 +141,3 @@ class ChatViewModel: ViewModelProtocol {
         messages[indexPath]
     }
 }
-

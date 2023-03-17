@@ -31,7 +31,6 @@
 		E5B8ABA329C327E200D99B7A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5B8ABA229C327E100D99B7A /* Inter-Medium.ttf */; };
 		E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABA529C35E9F00D99B7A /* OpenAISwift */; };
 		E5B8ABAB29C38C9300D99B7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */; };
-		E5B8ABAE29C3A91100D99B7A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */; };
 		E5B8ABB229C3B96C00D99B7A /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABB129C3B96C00D99B7A /* SettingsTableViewCell.swift */; };
 		E5B8ABB429C3C11D00D99B7A /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
@@ -74,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
-				E5B8ABAE29C3A91100D99B7A /* IQKeyboardManagerSwift in Frameworks */,
 				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
@@ -312,7 +310,6 @@
 				E554C1A629C05C6400053C44 /* SnapKit */,
 				E50E5BF129C074CE00535AA3 /* Hero */,
 				E5B8ABA529C35E9F00D99B7A /* OpenAISwift */,
-				E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -346,7 +343,6 @@
 				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
 				E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */,
-				E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -464,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -518,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -630,15 +626,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 10.0.0;
-				minimumVersion = 6.5.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -656,11 +643,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
-		};
-		E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E5B8ABAC29C3A91100D99B7A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

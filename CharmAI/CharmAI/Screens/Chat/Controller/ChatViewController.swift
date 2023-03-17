@@ -38,12 +38,12 @@ final class ChatViewController: UIViewController {
         chatInputView.delegate = self
         chatInputView.textView.delegate = self
         viewModel.fetchChat()
-        let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             let VC = InAppViewController()
             self.show(VC, sender:nil)
         })
+        
+        
        
         if viewModel.isPremium() {
             print("print vc turned true !!!!!!!!!!!!!!!!!")
@@ -52,6 +52,7 @@ final class ChatViewController: UIViewController {
         }
      
     }
+
   
     //MARK: BUTTON METHODS
     @objc func goSettings() {
@@ -81,14 +82,7 @@ final class ChatViewController: UIViewController {
         }
         
     }
-    
-//    @objc func keyboardWillShow(sender: NSNotification) {
-//        self.view.frame.origin.y -= 150
-//    }
-//    @objc func keyboardWillHide(sender: NSNotification) {
-//        self.view.frame.origin.y += 150
-//    }
-    
+
     //MARK: BOTTOM ACCESORY VIEW
     override var inputAccessoryView: UIView? {
         
@@ -129,8 +123,11 @@ extension ChatViewController: ViewModelDelegate {
             
             
         }
-        let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
+       
         
     }
 }

@@ -39,9 +39,13 @@ final class ChatViewController: UIViewController {
         chatInputView.textView.delegate = self
         viewModel.fetchChat()
         let VC = InAppViewController()
-        self.show(VC, sender:nil    )
-       
-    //    let c = Date().timeIntervalSince1970 as Double
+        self.show(VC, sender:nil)
+        if viewModel.isPremium() {
+            print("print vc turned true !!!!!!!!!!!!!!!!!")
+        } else {
+            print("print vc turned false !!!!!!!!!!!!!!!!!")
+        }
+     
     }
   
     //MARK: BUTTON METHODS

@@ -21,6 +21,7 @@ protocol ViewModelProtocol {
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void)
     func saveChat(chate: Chat)
     func fetchChat()
+    func isPremium() -> Bool
 }
 
 class ChatViewModel: ViewModelProtocol {
@@ -28,14 +29,10 @@ class ChatViewModel: ViewModelProtocol {
     private var client = OpenAISwift(authToken: K.APIKey)
     var messages = [Chat]() {
         didSet {
-           
             self.delegate?.responseSuccess()
-            
         }
     }
-
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
-        self.messages.removeAll()
         let sender = Chat(data: ["isSender" : true, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": input])
         self.saveChat(chate: sender)
         self.messages.append(sender)
@@ -57,8 +54,6 @@ class ChatViewModel: ViewModelProtocol {
     }
     
     func saveChat(chate: Chat) {
-        
-        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<ChatEntity> = ChatEntity.fetchRequest()
@@ -75,36 +70,25 @@ class ChatViewModel: ViewModelProtocol {
             chat.message = chate.message
             chat.id = chate.messageID
             chat.isSender = chate.isSender
-          //  chat.date = chate.date
+            
+            
             try context.save()
+           
+           // self.fetchChat()
             print("Chat saved successfully")
         } catch {
             print("Error saving chat: \(error.localizedDescription)")
         }
 
-        
-        
-        
-        
-        
-        
-        
-//
-//        let delegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = delegate.persistentContainer.viewContext
-//        let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatEntity", into: context)
-//        chat.setValue(chate.message, forKey: "message")
-//        chat.setValue(chate.messageID, forKey: "id")
-//       // chat.setValue(chate.date, forKey: "date")
-//        chat.setValue(chate.isSender, forKey: "isSender")
-//
-//        do {
-//            try context.save()
-//            print("success")
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-
+    }
+    
+    func isPremium() -> Bool {
+        var arr = messages.filter({$0.isSender == false})
+        if arr.count >= 5 {
+            print("have to pay")
+            return false
+        }
+        return true
     }
     
     func fetchChat() {

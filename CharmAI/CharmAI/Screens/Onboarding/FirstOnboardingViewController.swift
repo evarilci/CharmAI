@@ -16,7 +16,6 @@ class FirstOnboardingViewController: UIViewController {
     let slides: [OnboardingSlide] = [OnboardingSlide(beginningTitle: "Lorem", EndingTitle: "Ipsum dolor sit", Subtitle: "Ask the bot anything, It's always ready to help!", image: UIImage(named: K.Images.onboardingImage1)!), OnboardingSlide(beginningTitle: "Lorem", EndingTitle: "Ipsum dolor sit", Subtitle: "Get the best answers from our application Enjoy!", image: UIImage(named: K.Images.onboardingImage2)!)]
     let nextButton = CharmButton(title: "Next")
     
-    
     var currentPage = 0 {
         didSet {
             pageControll.currentPage = currentPage
@@ -50,8 +49,9 @@ class FirstOnboardingViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
           print("end of onboarding")
         } else {
-            self.pageControll.currentPage = self.currentPage
             self.currentPage += 1
+            self.pageControll.currentPage = self.currentPage
+           
             print("current page =  \(currentPage)")
             let indexPath = IndexPath(item: currentPage, section: 0)
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -74,7 +74,7 @@ class FirstOnboardingViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         pageControll.currentPageIndicatorTintColor = .accentColor
         pageControll.tintColor = .systemGray6
-        pageControll.currentPage = 0
+       // pageControll.currentPage = 0
         view.addSubview(collectionView)
         view.addSubview(pageControll)
         view.bringSubviewToFront(pageControll)

@@ -37,8 +37,11 @@ final class ChatViewController: UIViewController {
         viewModel.delegate = self
         chatInputView.delegate = self
         chatInputView.textView.delegate = self
+        viewModel.fetchChat()
+        let VC = InAppViewController()
+        self.show(VC, sender:nil    )
        
-        
+    //    let c = Date().timeIntervalSince1970 as Double
     }
   
     //MARK: BUTTON METHODS
@@ -47,7 +50,10 @@ final class ChatViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func refresh() {
-        print("refresh")
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     //MARK: UI METHOD
     func setupUI() {
@@ -86,7 +92,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HomeScreenCellIdentifier, for: indexPath) as! ChatCell
         let chat = viewModel.chatForRow(at: indexPath.row)
-       // viewModel.saveChat(chate: chat)
+        viewModel.saveChat(chate: chat)
         cell.chat = chat
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
@@ -97,6 +103,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: VIEWMODEL DELEGATE
 extension ChatViewController: ViewModelDelegate {
     func responseSuccess() {
+        
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -109,15 +117,13 @@ extension ChatViewController : ChatInputDelegate {
     func inputView(_ view: ChatInputView, input: String) {
         self.chatInputView.sendAction = { [self] in
            // self.view.endEditing(true)
-           
+         
                 self.viewModel.getResponse(input: input) { result in
                     switch result {
                     case .success(let model):
                         print(model)
                     case.failure(let error):
                         print(error)
-                        
-                    
                 }
             }
         }

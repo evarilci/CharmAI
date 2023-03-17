@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let navCon = UINavigationController(rootViewController: ChatViewController())
+        let navCon = UINavigationController(rootViewController: FirstOnboardingViewController())
 //        navCon.isHeroEnabled = true
         window?.rootViewController = navCon
         //window?.rootViewController = FirstOnboardingViewController()

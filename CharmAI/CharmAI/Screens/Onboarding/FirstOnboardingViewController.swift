@@ -46,7 +46,7 @@ class FirstOnboardingViewController: UIViewController {
     @objc func buttonClicked() {
       
         if self.currentPage == slides.count - 1 {
-           let vc = InAppViewController()
+           let vc = ChatViewController()
             self.navigationController?.pushViewController(vc, animated: true)
           print("end of onboarding")
         } else {

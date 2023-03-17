@@ -20,6 +20,7 @@
 		E554C1A729C05C6400053C44 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E554C1A629C05C6400053C44 /* SnapKit */; };
 		E556158829C0B34400A99043 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E556158729C0B34400A99043 /* Inter.ttf */; };
 		E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E556158929C0B71700A99043 /* ChatViewController.swift */; };
+		E57368CE29C496D900E0E6B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E57368CD29C496D900E0E6B9 /* Toast */; };
 		E57EECB029C0BD0700155608 /* barView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECAF29C0BD0700155608 /* barView.swift */; };
 		E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB329C0BFDF00155608 /* ChatCell.swift */; };
 		E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB529C0C3B200155608 /* UIView+Extension.swift */; };
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57368CE29C496D900E0E6B9 /* Toast in Frameworks */,
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
 				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
@@ -310,6 +312,7 @@
 				E554C1A629C05C6400053C44 /* SnapKit */,
 				E50E5BF129C074CE00535AA3 /* Hero */,
 				E5B8ABA529C35E9F00D99B7A /* OpenAISwift */,
+				E57368CD29C496D900E0E6B9 /* Toast */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -343,6 +346,7 @@
 				E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */,
 				E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				E57368CC29C496D900E0E6B9 /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -618,6 +622,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E57368CC29C496D900E0E6B9 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
 		E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
@@ -638,6 +650,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E554C1A529C05C6400053C44 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		E57368CD29C496D900E0E6B9 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E57368CC29C496D900E0E6B9 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 		E5B8ABA529C35E9F00D99B7A /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;

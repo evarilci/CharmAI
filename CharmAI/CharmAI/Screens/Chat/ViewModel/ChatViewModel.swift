@@ -27,11 +27,12 @@ protocol ViewModelProtocol {
 class ChatViewModel: ViewModelProtocol {
     var delegate: ViewModelDelegate?
     private var client = OpenAISwift(authToken: K.APIKey)
-    var messages = [Chat]() {
-        didSet {
-            self.delegate?.responseSuccess()
-        }
-    }
+    var messages = [Chat]()
+//    {
+//        didSet {
+//            self.delegate?.responseSuccess()
+//        }
+//    }
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
         let sender = Chat(data: ["isSender" : true, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": input])
         self.saveChat(chate: sender)
@@ -45,11 +46,13 @@ class ChatViewModel: ViewModelProtocol {
                 self.saveChat(chate: chat)
                 self.messages.append(chat)
                 completion(.success(newOutput))
+                self.delegate?.responseSuccess()
                 
             case .failure(let error):
                 completion(.failure(error))
                
             }
+            self.delegate?.responseSuccess()
         })
     }
     

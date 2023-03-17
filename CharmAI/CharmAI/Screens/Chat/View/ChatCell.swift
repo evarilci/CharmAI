@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class ChatCell: UITableViewCell {
     
@@ -46,6 +47,13 @@ final class ChatCell: UITableViewCell {
     }()
     
     
+    let copyButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: K.Images.copyButtonImage), for: .normal)
+        return button
+    }()
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .black
@@ -60,7 +68,16 @@ final class ChatCell: UITableViewCell {
     func setupUI() {
         addSubview(iconView)
         addSubview(messageContainer)
+        contentView.addSubview(copyButton)
+        addSubview(copyButton)
         messageContainer.addSubview(textView)
+        
+        
+        copyButton.snp.makeConstraints { make in
+            make.trailing.equalTo(messageContainer.snp.trailing)
+            make.bottom.equalTo(messageContainer.snp.bottom)
+            make.width.height.equalTo(25)
+        }
         
         iconView.snp.makeConstraints { make in
             make.width.height.equalTo(25)
@@ -79,15 +96,24 @@ final class ChatCell: UITableViewCell {
             
             make.top.equalTo(messageContainer.snp.top)
             make.leading.equalTo(messageContainer.snp.leading)
-            make.trailing.equalTo(messageContainer.snp.trailing)
+            make.trailing.equalTo(copyButton.snp.leading)
             make.bottom.equalTo(messageContainer.snp.bottom)
-            
         }
         
         messageContainer.layer.cornerRadius = self.frame.height / 3
         messageContainer.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        copyButton.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         
         iconView.layer.cornerRadius = 25 / 2
+    }
+    @objc func copyAction() {
+        
+        guard let textToCopy = textView.text else {
+               return
+           }
+           UIPasteboard.general.string = textToCopy
+        let toast = Toast.text("Copied")
+        toast.show()
     }
     
     private func configure(chat: Chat) {
@@ -102,6 +128,15 @@ final class ChatCell: UITableViewCell {
                 make.leading.equalTo(self.snp.centerX)
                 make.top.equalToSuperview().offset(6)
                 make.trailing.equalToSuperview().offset(-5)
+                make.bottom.equalToSuperview().offset(-12)
+            }
+            layoutIfNeeded()
+        } else {
+            messageContainer.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+            messageContainer.snp.remakeConstraints { make in
+                make.leading.equalTo(iconView.snp.trailing).offset(4)
+                make.top.equalToSuperview().offset(6)
+                make.trailing.equalToSuperview().multipliedBy(0.5)
                 make.bottom.equalToSuperview().offset(-12)
             }
             layoutIfNeeded()

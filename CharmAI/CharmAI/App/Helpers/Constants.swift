@@ -41,6 +41,7 @@ struct K {
         static let icon_privacypolicy = "icon_privacypolicy"
         static let icon_termsofuse = "icon_termsofuse"
         static let icon_restorepurchase = "icon_restorepurchase"
+        static let copyButtonImage = "icon_copy"
         
         
     }

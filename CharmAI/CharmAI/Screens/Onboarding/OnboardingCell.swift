@@ -14,6 +14,7 @@ final class OnboardingCell: UICollectionViewCell {
     let onboardingImage: UIImageView = {
        let iv = UIImageView()
         iv.image = UIImage(named: K.Images.onboardingImage1)
+        iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         return iv
     }()

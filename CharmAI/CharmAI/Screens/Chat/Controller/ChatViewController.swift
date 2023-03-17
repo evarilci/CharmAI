@@ -12,7 +12,9 @@ import UIKit
 final class ChatViewController: UIViewController {
     //MARK: PROPERTIES
     let tableView = UITableView()
+    
     let viewModel = ChatViewModel()
+    
     private lazy var chatInputView : ChatInputView = {
         let iv = ChatInputView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 65))
         
@@ -34,7 +36,11 @@ final class ChatViewController: UIViewController {
         tableView.separatorStyle = .none
         viewModel.delegate = self
         chatInputView.delegate = self
+        chatInputView.textView.delegate = self
+       
+        
     }
+  
     //MARK: BUTTON METHODS
     @objc func goSettings() {
      let vc = SettingsViewController()
@@ -79,11 +85,10 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HomeScreenCellIdentifier, for: indexPath) as! ChatCell
-        
-        cell.chat = viewModel.chatForRow(at: indexPath.row)
-        cell.layoutIfNeeded()
+        let chat = viewModel.chatForRow(at: indexPath.row)
+       // viewModel.saveChat(chate: chat)
+        cell.chat = chat
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
         return cell
     }
     
@@ -99,11 +104,12 @@ extension ChatViewController: ViewModelDelegate {
     }
 }
 
+// MARK: ChatInputDelegate
 extension ChatViewController : ChatInputDelegate {
     func inputView(_ view: ChatInputView, input: String) {
         self.chatInputView.sendAction = { [self] in
-            self.view.endEditing(true)
-            DispatchQueue.main.async {
+           // self.view.endEditing(true)
+           
                 self.viewModel.getResponse(input: input) { result in
                     switch result {
                     case .success(let model):
@@ -111,11 +117,21 @@ extension ChatViewController : ChatInputDelegate {
                     case.failure(let error):
                         print(error)
                         
-                    }
+                    
                 }
             }
-           
         }
     }
     
+}
+
+
+extension ChatViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }

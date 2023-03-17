@@ -7,6 +7,7 @@
 
 import UIKit
 import OpenAISwift
+import CoreData
 
 protocol ViewModelDelegate: AnyObject {
     
@@ -18,6 +19,7 @@ protocol ViewModelProtocol {
     func numberOfRows() -> Int
     func chatForRow(at indexPath: Int) -> Chat
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void)
+   // func saveChat(chate: Chat)
 }
 
 class ChatViewModel: ViewModelProtocol {
@@ -40,16 +42,33 @@ class ChatViewModel: ViewModelProtocol {
                 let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
                 let chat = Chat(data: ["isSender" : false, "id": UUID(), "date": Date().timeIntervalSince1970, "message": newOutput])
                 self.messages.append(chat)
-               
                 completion(.success(newOutput))
-              
+                
             case .failure(let error):
                 completion(.failure(error))
-                print(error.localizedDescription)
-                
+               
             }
         })
     }
+    
+//    func saveChat(chate: Chat) {
+//
+//        let delegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = delegate.persistentContainer.viewContext
+//        let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context)
+//        chat.setValue(chate.message, forKey: "message")
+//        chat.setValue(chate.messageID, forKey: "id")
+//        chat.setValue(chate.isSender, forKey: "isSender")
+//        chat.setValue(chate.date, forKey: "date")
+//        do {
+//            try context.save()
+//            print("success")
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//
+//
+//    }
        
     func numberOfRows() -> Int {
         return messages.count

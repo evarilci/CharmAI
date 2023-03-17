@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import SnapKit
-import IQKeyboardManagerSwift
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,22 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        keyboardSetup()
+        
+    
         return true
     }
     
-    func keyboardSetup() {
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Dismiss"
-        IQKeyboardManager.shared.toolbarTintColor = UIColor.systemBlue
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
-        IQKeyboardManager.shared.layoutIfNeededOnUpdate = true
-       
-        
-    }
-
-
+  
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -46,6 +46,7 @@ class ChatInputView: UIView {
         super.init(frame: frame)
         backgroundColor = .black
         setupUI()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -97,3 +98,5 @@ class ChatInputView: UIView {
         }
     }
 }
+
+

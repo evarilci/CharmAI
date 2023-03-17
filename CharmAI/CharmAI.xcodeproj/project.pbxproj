@@ -32,6 +32,8 @@
 		E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABA529C35E9F00D99B7A /* OpenAISwift */; };
 		E5B8ABAB29C38C9300D99B7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */; };
 		E5B8ABAE29C3A91100D99B7A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5B8ABAD29C3A91100D99B7A /* IQKeyboardManagerSwift */; };
+		E5B8ABB229C3B96C00D99B7A /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABB129C3B96C00D99B7A /* SettingsTableViewCell.swift */; };
+		E5B8ABB429C3C11D00D99B7A /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */; };
 		E5BC03FD29C0891600C38E42 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */; };
 		E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		E5B8ABA029C327DA00D99B7A /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		E5B8ABA229C327E100D99B7A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E5B8ABB129C3B96C00D99B7A /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		E5BC03FC29C0891600C38E42 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E5BC03FE29C08E1200C38E42 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,9 +269,27 @@
 		E5B8ABA929C38C7B00D99B7A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */,
+				E5B8ABB029C3B95000D99B7A /* View */,
+				E5B8ABAF29C3B94700D99B7A /* Controller */,
+				E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E5B8ABAF29C3B94700D99B7A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8ABAA29C38C9300D99B7A /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E5B8ABB029C3B95000D99B7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8ABB129C3B96C00D99B7A /* SettingsTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +382,7 @@
 				E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */,
 				E554C1A429C05BCF00053C44 /* Constants.swift in Sources */,
 				E554C18729C0557E00053C44 /* FirstOnboardingViewController.swift in Sources */,
+				E5B8ABB229C3B96C00D99B7A /* SettingsTableViewCell.swift in Sources */,
 				E57EECB029C0BD0700155608 /* barView.swift in Sources */,
 				E58B6FE329C1B3D400207257 /* Chat.swift in Sources */,
 				E554C18D29C0557E00053C44 /* CharmAI.xcdatamodeld in Sources */,
@@ -370,6 +393,7 @@
 				E554C18529C0557E00053C44 /* SceneDelegate.swift in Sources */,
 				E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */,
 				E5BC03FF29C08E1200C38E42 /* OnboardingSlide.swift in Sources */,
+				E5B8ABB429C3C11D00D99B7A /* SettingsModel.swift in Sources */,
 				E58B6FE029C1B3BB00207257 /* ChatViewModel.swift in Sources */,
 				E57EECB829C0D0BF00155608 /* ChatInputView.swift in Sources */,
 				E5B8ABAB29C38C9300D99B7A /* SettingsViewController.swift in Sources */,

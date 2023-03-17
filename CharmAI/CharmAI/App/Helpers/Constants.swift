@@ -12,6 +12,7 @@ struct K {
     
     static let HomeScreenCellIdentifier = "onboardingCell"
     static let APIKey = "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"
+    static let settingsTableViewIdentifier = "settingsCell"
     
     struct Images {
         static let onboardingImage1 = "Group 1171274876"
@@ -33,6 +34,14 @@ struct K {
         static let termsofuse = "termsofuse"
         static let cross = "icon_close"
         static let goPremium = "goPremium"
+        static let rightArrow = "icon_arrowleft"
+        static let restorepurchase = "icon_restorepurchase"
+        static let icon_rateus = "icon_rateus"
+        static let icon_contactus = "icon_contactus"
+        static let icon_privacypolicy = "icon_privacypolicy"
+        static let icon_termsofuse = "icon_termsofuse"
+        static let icon_restorepurchase = "icon_restorepurchase"
+        
         
     }
     

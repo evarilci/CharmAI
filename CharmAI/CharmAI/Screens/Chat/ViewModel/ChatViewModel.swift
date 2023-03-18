@@ -30,15 +30,17 @@ class ChatViewModel: ViewModelProtocol {
     var messages = [Chat]()
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
         let sender = Chat(data: ["isSender" : true, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": input])
-        self.saveChat(chate: sender)
+     //   self.saveChat(chate: sender)
+        //self.saveChat(chate: sender)
         self.messages.append(sender)
+        self.delegate?.responseSuccess()
         client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { result in
             switch result {
             case .success(let model):
                 let output = model.choices.first?.text ?? "hello"
                 let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
                 let chat = Chat(data: ["isSender" : false, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
-                self.saveChat(chate: chat)
+            //    self.saveChat(chate: chat)
                 self.messages.append(chat)
                 completion(.success(newOutput))
                 self.delegate?.responseSuccess()
@@ -81,7 +83,7 @@ class ChatViewModel: ViewModelProtocol {
     }
     
     func isPremium() -> Bool {
-        var arr = messages.filter({$0.isSender == false})
+        let arr = messages.filter({$0.isSender == false})
         if arr.count >= 5 {
             print("have to pay")
             return false

@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ChatInputDelegate : AnyObject {
-    func inputView(_ view: ChatInputView, input: String )
+  //  func inputView(_ view: ChatInputView, input: String )
+    func didPressPassData(text: String?)
 }
 
 class ChatInputView: UIView {
@@ -55,9 +56,17 @@ class ChatInputView: UIView {
     @objc func sendButtonAction() {
         sendAction?()
         guard let input = textView.text else { return }
-        delegate?.inputView(self, input: input)
-        textView.text = ""
+      //  delegate?.inputView(self, input: input)
+        delegate?.didPressPassData(text: input)
+       // textView.text = ""
     }
+    
+    @objc func didPressPassDataButton(_ sender: UIButton) {
+        sendAction?()
+        guard let input = textView.text else { return }
+       delegate?.didPressPassData(text: input)
+   }
+    
     
     @objc func handleButton() {
         
@@ -71,7 +80,7 @@ class ChatInputView: UIView {
         addSubview(placeholderLabel)
         autoresizingMask = .flexibleHeight
         NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: UITextView.textDidChangeNotification, object: nil)
-        sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(didPressPassDataButton(_:)), for: .touchUpInside)
         sendButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
@@ -100,3 +109,46 @@ class ChatInputView: UIView {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class CustomView: UIView {
+
+    weak var textView: UITextView!
+    weak var delegate: CustomViewDelegate?
+    
+     func didPressPassDataButton(_ sender: UIButton) {
+        delegate?.didPressPassData(text: textView.text)
+    }
+}
+
+protocol CustomViewDelegate: AnyObject {
+    func didPressPassData(text: String?)
+}
+
+
+// calling in the Parent VC
+
+class ParentVC: UIViewController, CustomViewDelegate {
+     weak var customView: CustomView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        customView.delegate = self
+    }
+
+    //MARK: CustomViewDelegate methods
+    func didPressPassData(text: String?) {
+        print(text)
+    }
+}

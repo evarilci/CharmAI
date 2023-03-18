@@ -14,13 +14,15 @@ final class ChatViewController: UIViewController {
     let tableView = UITableView()
     
     let viewModel = ChatViewModel()
-    
+   
     private lazy var chatInputView : ChatInputView = {
         let iv = ChatInputView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 65))
         
        
         return iv
     }()
+    
+  
     
     
     //MARK: LIFECYCLE
@@ -37,6 +39,7 @@ final class ChatViewController: UIViewController {
         viewModel.delegate = self
         chatInputView.delegate = self
         chatInputView.textView.delegate = self
+       // UITextView().delegate = self
         viewModel.fetchChat()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -47,23 +50,49 @@ final class ChatViewController: UIViewController {
 
         // call the 'keyboardWillShow' function when the view controller receive notification that keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
+
         // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
       // move back the root view origin to zero
-      self.view.frame.origin.y = 0
+        
+        tableView.snp.remakeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview { view in
+                view.safeAreaLayoutGuide
+            }
+            make.bottom.equalToSuperview()
+        }
+        self.view.layoutIfNeeded()
+        let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        
+        
+     // self.view.frame.origin.y = 0
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
            // if keyboard size is not available for some reason, dont do anything
+       
            return
         }
       // move the root view up by the distance of keyboard height
-      self.view.frame.origin.y = 0 - keyboardSize.height
+        
+        tableView.snp.remakeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview { view in
+                view.safeAreaLayoutGuide
+            }
+            make.bottom.equalToSuperview().offset(-keyboardSize.height)
+        }
+        self.view.layoutIfNeeded()
+        let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        
+    //  self.view.frame.origin.y = 0 - keyboardSize.height
     }
        
   
@@ -77,7 +106,7 @@ final class ChatViewController: UIViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     //MARK: UI METHOD
@@ -90,8 +119,11 @@ final class ChatViewController: UIViewController {
         navigationItem.titleView = BarView()
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview { view in
+                view.safeAreaLayoutGuide
+            }
+            make.bottom.equalToSuperview()
         }
         
     }
@@ -147,11 +179,17 @@ extension ChatViewController: ViewModelDelegate {
 
 // MARK: ChatInputDelegate
 extension ChatViewController : ChatInputDelegate {
-    func inputView(_ view: ChatInputView, input: String) {
+    
+    
+    
+    
+    
+    
+    func didPressPassData(text: String?) {
         self.chatInputView.sendAction = { [self] in
            // self.view.endEditing(true)
          
-                self.viewModel.getResponse(input: input) { result in
+            self.viewModel.getResponse(input: text!) { result in
                     switch result {
                     case .success(let model):
                         print(model)
@@ -161,6 +199,21 @@ extension ChatViewController : ChatInputDelegate {
             }
         }
     }
+    
+//    func inputView(_ view: ChatInputView, input: String) {
+////        self.chatInputView.sendAction = { [self] in
+////           // self.view.endEditing(true)
+////
+////                self.viewModel.getResponse(input: input) { result in
+////                    switch result {
+////                    case .success(let model):
+////                        print(model)
+////                    case.failure(let error):
+////                        print(error)
+////                }
+////            }
+////        }
+//    }
     
 }
 
@@ -174,5 +227,21 @@ extension ChatViewController: UITextViewDelegate {
         return true
     }
     
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//
+//
+//    }
+//
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        tableView.snp.remakeConstraints { make in
+//            make.leading.trailing.equalToSuperview()
+//            make.top.equalToSuperview { view in
+//                view.safeAreaLayoutGuide
+//            }
+//            make.bottom.equalToSuperview()
+//        }
+//        self.view.layoutIfNeeded()
+//    }
+//
     
 }

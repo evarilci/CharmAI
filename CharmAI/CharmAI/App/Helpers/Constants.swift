@@ -43,7 +43,6 @@ struct K {
         static let icon_restorepurchase = "icon_restorepurchase"
         static let copyButtonImage = "icon_copy"
         
-        
     }
     
     struct Icons {

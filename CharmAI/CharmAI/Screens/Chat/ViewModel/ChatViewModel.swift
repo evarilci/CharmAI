@@ -8,6 +8,7 @@
 import UIKit
 import OpenAISwift
 import CoreData
+import RevenueCat
 
 protocol ViewModelDelegate: AnyObject {
     
@@ -21,7 +22,9 @@ protocol ViewModelProtocol {
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void)
     func saveChat(chate: Chat)
     func fetchChat()
-    func isPremium() -> Bool
+    func fetchPackages(completion: @escaping(RevenueCat.Package) -> Void)
+    func purchase(package: RevenueCat.Package)
+    func restore()
 }
 
 class ChatViewModel: ViewModelProtocol {
@@ -56,7 +59,6 @@ class ChatViewModel: ViewModelProtocol {
             }
         })
     }
-    
     func saveChat(chate: Chat) {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
@@ -80,15 +82,41 @@ class ChatViewModel: ViewModelProtocol {
             print("Error saving chat: \(error.localizedDescription)")
         }
     }
-    func isPremium() -> Bool {
-        let arr = messages.filter({$0.isSender == false})
-        if arr.count >= 5 {
-            print("have to pay")
-            return false
+    
+    
+    func fetchPackages(completion: @escaping(RevenueCat.Package) -> Void) {
+        Purchases.shared.getOfferings { offerings, error in
+            guard let offerings = offerings, error == nil else {return}
+            guard let package = offerings.all.first?.value.package(identifier: "$rc_weekly") else {return}
+            print("***********************\(package)****************************")
+            completion(package)
         }
-        return true
     }
     
+    func purchase(package: RevenueCat.Package) {
+        Purchases.shared.purchase(package: package) { transaction, customerInfo, error, userCanceled in
+            guard let transaction = transaction, let info = customerInfo, error == nil, !userCanceled else {return}
+            if info.entitlements.all["pro"]?.isActive == true {
+                print(info.entitlements)
+               
+            } else {
+              
+            }
+            print(transaction.purchaseDate)
+            print(info.entitlements)
+        }
+    }
+    func restore() {
+        Purchases.shared.restorePurchases {  info, error in
+            guard let info = info, error == nil else {return}
+            if info.entitlements.all["pro"]?.isActive == true {
+                print(info.entitlements)
+            } else {
+                DispatchQueue.main.async {
+                }
+            }
+        }
+    }
     func fetchChat() {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
@@ -114,7 +142,6 @@ class ChatViewModel: ViewModelProtocol {
             print(error.localizedDescription)
         }
     }
-       
     func numberOfRows() -> Int {
         return messages.count
     }

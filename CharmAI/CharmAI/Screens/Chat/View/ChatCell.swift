@@ -136,7 +136,7 @@ final class ChatCell: UITableViewCell {
             messageContainer.snp.remakeConstraints { make in
                 make.leading.equalTo(iconView.snp.trailing).offset(4)
                 make.top.equalToSuperview().offset(6)
-                make.trailing.equalToSuperview().multipliedBy(0.5)
+                make.trailing.equalToSuperview().multipliedBy(0.7)
                 make.bottom.equalToSuperview().offset(-12)
             }
             layoutIfNeeded()

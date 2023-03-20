@@ -37,10 +37,21 @@ final class ChatViewController: UIViewController {
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         viewModel.delegate = self
-        chatInputView.delegate = self
+       
         chatInputView.textView.delegate = self
        // UITextView().delegate = self
         viewModel.fetchChat()
+        chatInputView.sendAction = { [self] input in
+            viewModel.getResponse(input: input!) { result in
+                switch result {
+                case .success(let model):
+                    print(model)
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             let VC = InAppViewController()
@@ -92,7 +103,6 @@ final class ChatViewController: UIViewController {
         let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         
-    //  self.view.frame.origin.y = 0 - keyboardSize.height
     }
        
   
@@ -149,7 +159,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HomeScreenCellIdentifier, for: indexPath) as! ChatCell
         let chat = viewModel.chatForRow(at: indexPath.row)
-        viewModel.saveChat(chate: chat)
+       // viewModel.saveChat(chate: chat)
         cell.chat = chat
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
@@ -178,33 +188,25 @@ extension ChatViewController: ViewModelDelegate {
 }
 
 // MARK: ChatInputDelegate
-extension ChatViewController : ChatInputDelegate {
-    
-    
-    
-    
-    
-    
-    func didPressPassData(text: String?) {
-        self.chatInputView.sendAction = { [self] in
-           // self.view.endEditing(true)
-         
-            self.viewModel.getResponse(input: text!) { result in
-                    switch result {
-                    case .success(let model):
-                        print(model)
-                    case.failure(let error):
-                        print(error)
-                }
-            }
-        }
-    }
-    
-//    func inputView(_ view: ChatInputView, input: String) {
+//extension ChatViewController : ChatInputDelegate {
+//
+//
+//
+//
+//
+//
+//    func didPressPassData(text: String?) {
+//
+//        self.chatInputView.sendAction = {[self] input in
+//
+//
+//
+//        }
+//
 ////        self.chatInputView.sendAction = { [self] in
 ////           // self.view.endEditing(true)
 ////
-////                self.viewModel.getResponse(input: input) { result in
+////            self.viewModel.getResponse(input: text!) { result in
 ////                    switch result {
 ////                    case .success(let model):
 ////                        print(model)
@@ -214,10 +216,25 @@ extension ChatViewController : ChatInputDelegate {
 ////            }
 ////        }
 //    }
-    
-}
-
-
+//
+////    func inputView(_ view: ChatInputView, input: String) {
+//////        self.chatInputView.sendAction = { [self] in
+//////           // self.view.endEditing(true)
+//////
+//////                self.viewModel.getResponse(input: input) { result in
+//////                    switch result {
+//////                    case .success(let model):
+//////                        print(model)
+//////                    case.failure(let error):
+//////                        print(error)
+//////                }
+//////            }
+//////        }
+////    }
+//
+//}
+//
+//
 extension ChatViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -226,7 +243,7 @@ extension ChatViewController: UITextViewDelegate {
         }
         return true
     }
-    
+
 //    func textViewDidBeginEditing(_ textView: UITextView) {
 //
 //
@@ -243,5 +260,5 @@ extension ChatViewController: UITextViewDelegate {
 //        self.view.layoutIfNeeded()
 //    }
 //
-    
+
 }

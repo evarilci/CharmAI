@@ -22,7 +22,7 @@ protocol ViewModelProtocol {
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void)
     func saveChat(chate: Chat)
     func fetchChat()
-    func fetchPackages(completion: @escaping(RevenueCat.Package) -> Void)
+    func fetchPackages(offering: String, completion: @escaping(RevenueCat.Package) -> Void)
     func purchase(package: RevenueCat.Package)
     func restore()
 }
@@ -84,10 +84,10 @@ class ChatViewModel: ViewModelProtocol {
     }
     
     
-    func fetchPackages(completion: @escaping(RevenueCat.Package) -> Void) {
+    func fetchPackages(offering: String, completion: @escaping(RevenueCat.Package) -> Void) {
         Purchases.shared.getOfferings { offerings, error in
             guard let offerings = offerings, error == nil else {return}
-            guard let package = offerings.all.first?.value.package(identifier: K.RevenueCatIDs.weekly) else {return}
+            guard let package = offerings.all.first?.value.package(identifier: offering) else {return}
             print("***********************\(package)****************************")
             completion(package)
         }

@@ -44,9 +44,9 @@ final class ChatViewController: UIViewController {
                 }
             }
         }
-        viewModel.fetchPackages { package in
-          
-        }
+//        viewModel.fetchPackages { package in
+//            self.viewModel.purchase(package: package)
+//        }
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             let VC = InAppViewController()

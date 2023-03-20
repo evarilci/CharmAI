@@ -23,9 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         let navCon = UINavigationController(rootViewController: FirstOnboardingViewController())
-//        navCon.isHeroEnabled = true
         window?.rootViewController = navCon
-        //window?.rootViewController = FirstOnboardingViewController()
         window?.makeKeyAndVisible()
         
     }

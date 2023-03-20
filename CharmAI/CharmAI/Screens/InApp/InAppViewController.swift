@@ -9,6 +9,8 @@ import UIKit
 
 final class InAppViewController: UIViewController {
     
+    let viewModel = ChatViewModel()
+    
     private let titleImage : UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: K.Images.titleIcon)
@@ -126,7 +128,27 @@ final class InAppViewController: UIViewController {
         weeklyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         monthlyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         annualyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
-       
+        let buyAction = UIAction {[self] _ in
+            if weeklyButton.isSelected {
+                viewModel.fetchPackages(offering: K.RevenueCatIDs.weekly) { package in
+                    self.viewModel.purchase(package: package)
+                }
+            } else if monthlyButton.isSelected {
+                viewModel.fetchPackages(offering: K.RevenueCatIDs.monthly) { package in
+                    self.viewModel.purchase(package: package)
+                }
+                
+            } else if annualyButton.isSelected {
+                viewModel.fetchPackages(offering: K.RevenueCatIDs.annual) { package in
+                    self.viewModel.purchase(package: package)
+                }
+                
+            }
+        }
+            
+            
+        
+        tryButton.addAction(buyAction, for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [weeklyButton,monthlyButton,annualyButton])
         stack.distribution = .fillEqually

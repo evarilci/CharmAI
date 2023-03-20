@@ -64,6 +64,7 @@ final class InAppViewController: UIViewController {
         view.backgroundColor = .blackBackgroundColor
         let cross = UIBarButtonItem(image: UIImage(named: K.Images.cross), style: .done, target: self, action: #selector(dismissVC))
         self.navigationItem.rightBarButtonItem = cross
+        self.navigationItem.hidesBackButton = true
         setupUI()
    
     }
@@ -110,7 +111,7 @@ final class InAppViewController: UIViewController {
        
     }
     @objc func dismissVC() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupUI() {

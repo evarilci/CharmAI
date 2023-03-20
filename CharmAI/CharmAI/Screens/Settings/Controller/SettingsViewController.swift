@@ -43,7 +43,11 @@ final class SettingsViewController: UIViewController {
     func setupUI() {
         view.addSubview(goPremiumButton)
         view.addSubview(tableView)
-        
+        let goPre = UIAction { _ in
+            let vc = InAppViewController()
+            self.show(vc, sender: nil)
+        }
+        goPremiumButton.addAction(goPre, for: .touchUpInside)
         view.backgroundColor = .blackBackgroundColor
         self.navigationItem.backButtonDisplayMode = .minimal
         goPremiumButton.snp.makeConstraints { make in

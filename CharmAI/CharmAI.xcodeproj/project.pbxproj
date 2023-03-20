@@ -22,6 +22,8 @@
 		E556158A29C0B71700A99043 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E556158929C0B71700A99043 /* ChatViewController.swift */; };
 		E57368CE29C496D900E0E6B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E57368CD29C496D900E0E6B9 /* Toast */; };
 		E57EAE2429C85BC4004F7519 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E57EAE2329C85BC4004F7519 /* RevenueCat */; };
+		E57EAE2729C86F1A004F7519 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57EAE2629C86F1A004F7519 /* StoreKit.framework */; };
+		E57EAE2A29C87925004F7519 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = E57EAE2929C87925004F7519 /* StoreKitTestCertificate.cer */; };
 		E57EECB029C0BD0700155608 /* barView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECAF29C0BD0700155608 /* barView.swift */; };
 		E57EECB429C0BFDF00155608 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB329C0BFDF00155608 /* ChatCell.swift */; };
 		E57EECB629C0C3B200155608 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EECB529C0C3B200155608 /* UIView+Extension.swift */; };
@@ -53,6 +55,9 @@
 		E554C1A329C05BCF00053C44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E556158729C0B34400A99043 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		E556158929C0B71700A99043 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E57EAE2629C86F1A004F7519 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E57EAE2829C8780E004F7519 /* configure.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = configure.storekit; sourceTree = "<group>"; };
+		E57EAE2929C87925004F7519 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		E57EECAF29C0BD0700155608 /* barView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barView.swift; sourceTree = "<group>"; };
 		E57EECB329C0BFDF00155608 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		E57EECB529C0C3B200155608 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -77,6 +82,7 @@
 				E57368CE29C496D900E0E6B9 /* Toast in Frameworks */,
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
 				E57EAE2429C85BC4004F7519 /* RevenueCat in Frameworks */,
+				E57EAE2729C86F1A004F7519 /* StoreKit.framework in Frameworks */,
 				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
@@ -100,6 +106,7 @@
 			children = (
 				E554C18129C0557E00053C44 /* CharmAI */,
 				E554C18029C0557E00053C44 /* Products */,
+				E57EAE2529C86F1A004F7519 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +124,8 @@
 				E554C19929C058B800053C44 /* App */,
 				E554C19A29C058C400053C44 /* Screens */,
 				E554C18B29C0557E00053C44 /* CharmAI.xcdatamodeld */,
+				E57EAE2829C8780E004F7519 /* configure.storekit */,
+				E57EAE2929C87925004F7519 /* StoreKitTestCertificate.cer */,
 			);
 			path = CharmAI;
 			sourceTree = "<group>";
@@ -224,6 +233,14 @@
 				E57EECB129C0BFC800155608 /* Controller */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		E57EAE2529C86F1A004F7519 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E57EAE2629C86F1A004F7519 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E57EECB129C0BFC800155608 /* Controller */ = {
@@ -371,6 +388,7 @@
 				E5B8ABA129C327DA00D99B7A /* Inter-Bold.ttf in Resources */,
 				E5B8ABA329C327E200D99B7A /* Inter-Medium.ttf in Resources */,
 				E556158829C0B34400A99043 /* Inter.ttf in Resources */,
+				E57EAE2A29C87925004F7519 /* StoreKitTestCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

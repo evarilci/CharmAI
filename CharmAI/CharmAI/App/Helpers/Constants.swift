@@ -45,6 +45,12 @@ struct K {
         
     }
     
+    struct RevenueCatIDs {
+        static let weekly = "$rc_weekly"
+        static let monthly = "$rc_monthly"
+        static let annual = "$rc_annual"
+    }
+    
     struct Icons {
         static let lock = "icon_lock"
         

@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 final class ChatViewController: UIViewController {
     //MARK: PROPERTIES
     let tableView = UITableView()
@@ -34,7 +33,6 @@ final class ChatViewController: UIViewController {
         viewModel.delegate = self
         
         chatInputView.textView.delegate = self
-        // UITextView().delegate = self
         viewModel.fetchChat()
         chatInputView.sendAction = { [self] input in
             viewModel.getResponse(input: input!) { result in
@@ -46,7 +44,10 @@ final class ChatViewController: UIViewController {
                 }
             }
         }
-        
+        viewModel.fetchPackages { package in
+          
+        }
+       
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             let VC = InAppViewController()
             self.show(VC, sender:nil)

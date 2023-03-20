@@ -87,7 +87,7 @@ class ChatViewModel: ViewModelProtocol {
     func fetchPackages(completion: @escaping(RevenueCat.Package) -> Void) {
         Purchases.shared.getOfferings { offerings, error in
             guard let offerings = offerings, error == nil else {return}
-            guard let package = offerings.all.first?.value.package(identifier: "$rc_weekly") else {return}
+            guard let package = offerings.all.first?.value.package(identifier: K.RevenueCatIDs.weekly) else {return}
             print("***********************\(package)****************************")
             completion(package)
         }

@@ -99,7 +99,9 @@ class FirstOnboardingViewController: UIViewController {
         
         
         nextButton.snp.makeConstraints { make in
-                make.top.equalTo(pageControll.snp.bottom).offset(8)
+            make.bottom.equalToSuperview { view in
+                view.safeAreaLayoutGuide
+            }
                    make.centerX.equalToSuperview()
                    make.width.equalToSuperview().multipliedBy(0.7)
                    make.height.equalTo(50)

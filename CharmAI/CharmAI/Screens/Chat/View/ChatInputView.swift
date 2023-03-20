@@ -68,7 +68,6 @@ class ChatInputView: UIView {
         let line = UIView()
         line.layer.borderWidth = 0.5
         line.layer.borderColor = UIColor.accentColor.cgColor
-        // line.backgroundColor = .accentColor
         addSubview(textView)
         addSubview(sendButton)
         addSubview(placeholderLabel)

@@ -9,7 +9,7 @@ import Foundation
 
 struct Chat {
     let isSender : Bool
-    let messageID : UUID
+    let messageID : String
     let date: Date
     let message : String
   
@@ -17,7 +17,7 @@ struct Chat {
     
     init(data: [String : Any]) {
         self.isSender = data["isSender"] as? Bool ?? false
-        self.messageID = data["id"] as! UUID
+        self.messageID = data["id"] as? String ?? ""
         self.message = data["message"] as? String ?? ""
         self.date = data["date"] as? Date ?? Date.now
     }

@@ -125,7 +125,7 @@ final class ChatCell: UITableViewCell {
         if chat.isSender {
             messageContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMinXMinYCorner]
             messageContainer.snp.remakeConstraints { make in
-                make.leading.equalTo(self.snp.centerX)
+                make.leading.equalTo(self.snp.centerX).multipliedBy(0.5)
                 make.top.equalToSuperview().offset(6)
                 make.trailing.equalToSuperview().offset(-5)
                 make.bottom.equalToSuperview().offset(-12)

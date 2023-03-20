@@ -62,6 +62,8 @@ final class InAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blackBackgroundColor
+        let cross = UIBarButtonItem(image: UIImage(named: K.Images.cross), style: .done, target: self, action: #selector(dismissVC))
+        self.navigationItem.rightBarButtonItem = cross
         setupUI()
    
     }
@@ -107,6 +109,9 @@ final class InAppViewController: UIViewController {
         }
        
     }
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func setupUI() {
         
@@ -128,7 +133,7 @@ final class InAppViewController: UIViewController {
         stack.spacing = 10
         
         
-        view.addSubview(crossButton)
+      //  view.addSubview(crossButton)
         view.addSubview(lockView)
         view.addSubview(unlockLabel)
         view.addSubview(titleImage)
@@ -137,13 +142,13 @@ final class InAppViewController: UIViewController {
         view.addSubview(tryButton)
         view.addSubview(termsofuseImage)
         
-        crossButton.snp.makeConstraints { make in
-            make.top.equalToSuperview { view in
-                view.safeAreaLayoutGuide
-            }.offset(-30)
-            make.trailing.equalToSuperview().offset(-20)
-            make.width.height.equalTo(50)
-        }
+//        crossButton.snp.makeConstraints { make in
+//            make.top.equalToSuperview { view in
+//                view.safeAreaLayoutGuide
+//            }.offset(-30)
+//            make.trailing.equalToSuperview().offset(-20)
+//            make.width.height.equalTo(50)
+//        }
         
         titleImage.snp.makeConstraints { make in
             make.top.equalToSuperview { view in

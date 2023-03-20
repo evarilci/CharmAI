@@ -187,54 +187,6 @@ extension ChatViewController: ViewModelDelegate {
     }
 }
 
-// MARK: ChatInputDelegate
-//extension ChatViewController : ChatInputDelegate {
-//
-//
-//
-//
-//
-//
-//    func didPressPassData(text: String?) {
-//
-//        self.chatInputView.sendAction = {[self] input in
-//
-//
-//
-//        }
-//
-////        self.chatInputView.sendAction = { [self] in
-////           // self.view.endEditing(true)
-////
-////            self.viewModel.getResponse(input: text!) { result in
-////                    switch result {
-////                    case .success(let model):
-////                        print(model)
-////                    case.failure(let error):
-////                        print(error)
-////                }
-////            }
-////        }
-//    }
-//
-////    func inputView(_ view: ChatInputView, input: String) {
-//////        self.chatInputView.sendAction = { [self] in
-//////           // self.view.endEditing(true)
-//////
-//////                self.viewModel.getResponse(input: input) { result in
-//////                    switch result {
-//////                    case .success(let model):
-//////                        print(model)
-//////                    case.failure(let error):
-//////                        print(error)
-//////                }
-//////            }
-//////        }
-////    }
-//
-//}
-//
-//
 extension ChatViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -244,21 +196,5 @@ extension ChatViewController: UITextViewDelegate {
         return true
     }
 
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//
-//
-//    }
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        tableView.snp.remakeConstraints { make in
-//            make.leading.trailing.equalToSuperview()
-//            make.top.equalToSuperview { view in
-//                view.safeAreaLayoutGuide
-//            }
-//            make.bottom.equalToSuperview()
-//        }
-//        self.view.layoutIfNeeded()
-//    }
-//
 
 }

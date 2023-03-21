@@ -38,8 +38,6 @@ final class SettingsViewController: UIViewController {
             
     }
     
-    
-    
     func setupUI() {
         view.addSubview(goPremiumButton)
         view.addSubview(tableView)

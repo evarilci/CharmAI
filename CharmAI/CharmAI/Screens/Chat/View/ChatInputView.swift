@@ -51,10 +51,11 @@ class ChatInputView: UIView {
     }
   
     @objc func didPressPassDataButton(_ sender: UIButton) {
-        guard let input = textView.text else { return }
-        sendAction?(input)
-        textView.text = ""
-   
+      
+            guard let input = textView.text else { return }
+            sendAction?(input)
+            textView.text = ""
+        
    }
     
     

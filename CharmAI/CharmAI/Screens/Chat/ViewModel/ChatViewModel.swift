@@ -30,6 +30,9 @@ protocol ViewModelProtocol {
 class ChatViewModel: ViewModelProtocol {
     var delegate: ViewModelDelegate?
     private var client = OpenAISwift(authToken: K.APIKey)
+    let defaults = UserDefaults.standard
+    
+   
    
     var messages = [Chat(data: ["isSender" : false, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message" : "Hello, my name is CharmAI. How can i help you?"])] {
         didSet {
@@ -37,28 +40,65 @@ class ChatViewModel: ViewModelProtocol {
         }
     }
     func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
+        let isPremium = defaults.bool(forKey: "premium")
         let senderID = UUID().uuidString
         let sender = Chat(data: ["isSender" : true, "id": senderID, "date": Date().timeIntervalSince1970 as Double, "message": input])
-    saveChat(chate: sender)
+        saveChat(chate: sender)
         self.messages.append(sender)
-        client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
-            switch result {
-            case .success(let model):
-                let output = model.choices.first?.text ?? "hello"
-                let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
-                let responseID = UUID().uuidString
-                let chat = Chat(data: ["isSender" : false, "id": responseID, "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
-                self?.saveChat(chate: chat)
-                self?.messages.append(chat)
-                completion(.success(newOutput))
-                self?.delegate?.responseSuccess()
-                
-            case .failure(let error):
-                completion(.failure(error))
-               
+            if isPremium {
+                print("VIEWMODEL PREMIUM DEFAULTS TRUE")
+                client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
+                    switch result {
+                    case .success(let model):
+                        let output = model.choices.first?.text ?? "hello"
+                        let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let responseID = UUID().uuidString
+                        let chat = Chat(data: ["isSender" : false, "id": responseID, "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
+                        self?.defaults.set(input, forKey: "last")
+                        self?.saveChat(chate: chat)
+                        self?.messages.append(chat)
+                        completion(.success(newOutput))
+                        self?.delegate?.responseSuccess()
+                        
+                    case .failure(let error):
+                        completion(.failure(error))
+                        
+                    }
+                })
+            
+            } else if isPremium == false && messages.count <= 11 {
+                client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
+                    switch result {
+                    case .success(let model):
+                        let output = model.choices.first?.text ?? "hello"
+                        let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let responseID = UUID().uuidString
+                        let chat = Chat(data: ["isSender" : false, "id": responseID, "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
+                        self?.defaults.set(input, forKey: "last")
+                        self?.saveChat(chate: chat)
+                        self?.messages.append(chat)
+                        completion(.success(newOutput))
+                        self?.delegate?.responseSuccess()
+                        
+                    case .failure(let error):
+                        completion(.failure(error))
+                        
+                    }
+                })
+            } else if isPremium == false && messages.count > 11 {
+                let chat = Chat(data: ["isSender" : false, "id": "paywall", "date": Date().timeIntervalSince1970 as Double, "message": "Go premium for further chattin' !"])
+                self.messages.append(chat)
+                self.saveChat(chate: chat)
+                print("LAST ELSE IF")
             }
-        })
+            
+        
+        
+  
+        
     }
+        
+    
     func saveChat(chate: Chat) {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext

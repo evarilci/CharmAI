@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RevenueCat
 
 
 final class ChatViewController: UIViewController {
     //MARK: PROPERTIES
     let tableView = UITableView()
-    
+    let defaults = UserDefaults.standard
     let viewModel = ChatViewModel()
     
     private lazy var chatInputView : ChatInputView = {
@@ -22,6 +23,7 @@ final class ChatViewController: UIViewController {
     //MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        let isPremium = defaults.bool(forKey: "premium")
         view.backgroundColor = .blackBackgroundColor
         self.navigationItem.hidesBackButton = true
         setupUI()
@@ -44,14 +46,13 @@ final class ChatViewController: UIViewController {
                 }
             }
         }
-//        viewModel.fetchPackages { package in
-//            self.viewModel.purchase(package: package)
-//        }
-       
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            let VC = InAppViewController()
-            self.show(VC, sender:nil)
-        })
+        
+        if !isPremium {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                let VC = InAppViewController()
+                self.show(VC, sender:nil)
+            })
+        }
         
         // call the 'keyboardWillShow' function when the view controller receive notification that keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -60,6 +61,7 @@ final class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+  
     @objc func keyboardWillHide(notification: NSNotification) {
         // move back the root view origin to zero
         tableView.snp.remakeConstraints { make in

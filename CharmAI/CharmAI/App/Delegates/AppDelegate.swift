@@ -13,11 +13,29 @@ import RevenueCat
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Purchases.configure(withAPIKey: "appl_BUPwSSxaWNfGrHiijfvzRRJFzDR")
+       var isPremium = false
+        let defaults = UserDefaults.standard
+        
+        Purchases.configure(withAPIKey: "appl_BUPwSSxaWNfGrHiijfvzRRJFzDR",appUserID: "123123")
+        
+        Purchases.shared.getCustomerInfo { info, error in
+            guard let info = info, error == nil else { return }
+            if  info.entitlements.all["pro"]?.isActive == false {
+                isPremium = false
+                defaults.set(isPremium, forKey: "premium")
+                print("APPDELEGATE PREMIUM FALSE")
+            } else if  info.entitlements.all["pro"]?.isActive == true {
+                isPremium = true
+                defaults.set(isPremium, forKey: "premium")
+                print("APPDELEGATE PREMIUM TRUE")
+            }
+        }
+        
+       
     
         return true
     }

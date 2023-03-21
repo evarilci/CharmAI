@@ -14,7 +14,7 @@ final class ChatViewController: UIViewController {
     let tableView = UITableView()
     let defaults = UserDefaults.standard
     let viewModel = ChatViewModel()
-    
+    var isPremium : Bool?
     private lazy var chatInputView : ChatInputView = {
         let iv = ChatInputView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 65))
         return iv
@@ -23,7 +23,7 @@ final class ChatViewController: UIViewController {
     //MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        let isPremium = defaults.bool(forKey: "premium")
+        isPremium = defaults.bool(forKey: "premium")
         view.backgroundColor = .blackBackgroundColor
         self.navigationItem.hidesBackButton = true
         setupUI()
@@ -47,7 +47,7 @@ final class ChatViewController: UIViewController {
             }
         }
         
-        if !isPremium {
+        if !isPremium! {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 let VC = InAppViewController()
                 self.show(VC, sender:nil)
@@ -59,6 +59,11 @@ final class ChatViewController: UIViewController {
         
         // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isPremium = defaults.bool(forKey: "premium")
     }
     
   

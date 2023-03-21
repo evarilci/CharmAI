@@ -9,6 +9,8 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
     
+    let defaults = UserDefaults.standard
+    lazy var isPremium = defaults.bool(forKey: "premium")
     
     let settings = [Settings(image: UIImage(named: K.Images.icon_rateus)!, label: "Rate Us"), Settings(image: UIImage(named: K.Images.icon_contactus)!, label: "Contact Us"), Settings(image: UIImage(named: K.Images.icon_privacypolicy)!, label: "Privacy Policy"), Settings(image: UIImage(named: K.Images.icon_termsofuse)!, label: "Terms of Use"), Settings(image: UIImage(named: K.Images.icon_restorepurchase)!, label: "Restore Purchase") ]
     
@@ -37,10 +39,15 @@ final class SettingsViewController: UIViewController {
         tableView.isScrollEnabled = false
             
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        goPremiumButton.isHidden = isPremium
+    }
     
     func setupUI() {
         view.addSubview(goPremiumButton)
         view.addSubview(tableView)
+        goPremiumButton.isHidden = isPremium
         let goPre = UIAction { _ in
             let vc = InAppViewController()
             self.show(vc, sender: nil)

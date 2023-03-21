@@ -10,6 +10,7 @@ import UIKit
 final class InAppViewController: UIViewController {
     
     let viewModel = ChatViewModel()
+    let defaults = UserDefaults.standard
     
     private let titleImage : UIImageView = {
         let iv = UIImageView()
@@ -129,19 +130,22 @@ final class InAppViewController: UIViewController {
         monthlyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         annualyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         let buyAction = UIAction {[self] _ in
+            var isPremium = true
             if weeklyButton.isSelected {
                 viewModel.fetchPackages(offering: K.RevenueCatIDs.weekly) { package in
                     self.viewModel.purchase(package: package)
                 }
+                defaults.set(isPremium, forKey: "premium")
             } else if monthlyButton.isSelected {
                 viewModel.fetchPackages(offering: K.RevenueCatIDs.monthly) { package in
                     self.viewModel.purchase(package: package)
                 }
-                
+                defaults.set(isPremium, forKey: "premium")
             } else if annualyButton.isSelected {
                 viewModel.fetchPackages(offering: K.RevenueCatIDs.annual) { package in
                     self.viewModel.purchase(package: package)
                 }
+                defaults.set(isPremium, forKey: "premium")
                 
             }
         }

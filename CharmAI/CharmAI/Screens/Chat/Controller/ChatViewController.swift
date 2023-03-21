@@ -103,11 +103,23 @@ final class ChatViewController: UIViewController {
     }
     @objc func refresh() {
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        let input = defaults.string(forKey: "last") ?? "NO LAST MESSAGE"
+        viewModel.getResponse(input: input) { result  in
+            switch result {
+            case .success(let model):
+                print(model)
+            case.failure(let error):
+                print(error)
+            }
+            
         }
+        
+        
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//            let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
+//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//        }
     }
     //MARK: UI METHOD
     func setupUI() {

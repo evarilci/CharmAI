@@ -32,8 +32,6 @@ class ChatViewModel: ViewModelProtocol {
     private var client = OpenAISwift(authToken: K.APIKey)
     let defaults = UserDefaults.standard
     
-   
-   
     var messages = [Chat(data: ["isSender" : false, "id": UUID(), "date": Date().timeIntervalSince1970 as Double, "message" : "Hello, my name is CharmAI. How can i help you?"])] {
         didSet {
             delegate?.responseSuccess()
@@ -43,6 +41,7 @@ class ChatViewModel: ViewModelProtocol {
         let isPremium = defaults.bool(forKey: "premium")
         let senderID = UUID().uuidString
         let sender = Chat(data: ["isSender" : true, "id": senderID, "date": Date().timeIntervalSince1970 as Double, "message": input])
+        defaults.set(input, forKey: "last")
         saveChat(chate: sender)
         self.messages.append(sender)
             if isPremium {
@@ -62,7 +61,6 @@ class ChatViewModel: ViewModelProtocol {
                         
                     case .failure(let error):
                         completion(.failure(error))
-                        
                     }
                 })
             
@@ -91,11 +89,6 @@ class ChatViewModel: ViewModelProtocol {
                 self.saveChat(chate: chat)
                 print("LAST ELSE IF")
             }
-            
-        
-        
-  
-        
     }
         
     

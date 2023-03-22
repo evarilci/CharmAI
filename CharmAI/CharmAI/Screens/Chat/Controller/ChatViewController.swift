@@ -27,14 +27,6 @@ final class ChatViewController: UIViewController {
         view.backgroundColor = .blackBackgroundColor
         self.navigationItem.hidesBackButton = true
         setupUI()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(ChatCell.self, forCellReuseIdentifier: K.HomeScreenCellIdentifier)
-        tableView.backgroundColor = .black
-        tableView.separatorStyle = .none
-        viewModel.delegate = self
-        
-        chatInputView.textView.delegate = self
         viewModel.fetchChat()
         chatInputView.sendAction = { [self] input in
             viewModel.getResponse(input: input!) { result in
@@ -50,6 +42,7 @@ final class ChatViewController: UIViewController {
         if !isPremium! {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 let VC = InAppViewController()
+                VC.modalTransitionStyle = .coverVertical
                 self.show(VC, sender:nil)
             })
         }
@@ -113,19 +106,19 @@ final class ChatViewController: UIViewController {
             }
             
         }
-        
-        
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//            let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//        }
+ 
     }
     //MARK: UI METHOD
     func setupUI() {
         let button = UIBarButtonItem(image: UIImage(named: K.Images.settings)!, style: .done, target: self, action: #selector(goSettings))
         let refresh = UIBarButtonItem(image: UIImage(named: K.Images.refresh)!, style: .done, target: self, action: #selector(refresh))
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ChatCell.self, forCellReuseIdentifier: K.HomeScreenCellIdentifier)
+        viewModel.delegate = self
+        chatInputView.textView.delegate = self
+        tableView.backgroundColor = .black
+        tableView.separatorStyle = .none
         navigationItem.rightBarButtonItem = button
         navigationItem.leftBarButtonItem = refresh
         navigationItem.titleView = BarView()
@@ -174,7 +167,7 @@ extension ChatViewController: ViewModelDelegate {
         }
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: self.viewModel.messages.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
 }

@@ -90,8 +90,7 @@ class ChatViewModel: ViewModelProtocol {
                 print("LAST ELSE IF")
             }
     }
-        
-    
+       
     func saveChat(chate: Chat) {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext

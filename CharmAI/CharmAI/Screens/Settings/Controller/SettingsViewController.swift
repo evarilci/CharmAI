@@ -50,6 +50,7 @@ final class SettingsViewController: UIViewController {
         goPremiumButton.isHidden = isPremium
         let goPre = UIAction { _ in
             let vc = InAppViewController()
+            vc.modalTransitionStyle = .coverVertical
             self.show(vc, sender: nil)
         }
         goPremiumButton.addAction(goPre, for: .touchUpInside)
@@ -74,9 +75,6 @@ final class SettingsViewController: UIViewController {
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 22
     }
-    
-    
-    
 }
 
 

@@ -288,9 +288,9 @@
 		E5B8ABA929C38C7B00D99B7A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E5D54A7729CAE93700F41E9C /* SettingsModel */,
 				E5B8ABB029C3B95000D99B7A /* View */,
 				E5B8ABAF29C3B94700D99B7A /* Controller */,
-				E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -309,6 +309,14 @@
 				E5B8ABB129C3B96C00D99B7A /* SettingsTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E5D54A7729CAE93700F41E9C /* SettingsModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8ABB329C3C11D00D99B7A /* SettingsModel.swift */,
+			);
+			path = SettingsModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -36,10 +36,9 @@ class FirstOnboardingViewController: UIViewController {
         collectionView.dataSource = self
         pageControll.numberOfPages = slides.count
         view.backgroundColor = .blackBackgroundColor
+        self.pageControll.currentPage = self.currentPage
        
    
-       
-        
     }
     
     @objc func buttonClicked() {

@@ -66,7 +66,7 @@ final class SettingsViewController: UIViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(goPremiumButton.snp.bottom).offset(32)
+            make.top.equalTo(isPremium ? view.safeAreaLayoutGuide : goPremiumButton.snp.bottom).offset(32)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.9)
             make.height.equalTo(360)

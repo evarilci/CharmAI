@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        var isPremium = false
         let defaults = UserDefaults.standard
         
-        Purchases.configure(withAPIKey: "appl_BUPwSSxaWNfGrHiijfvzRRJFzDR",appUserID: "156869aasdasddsdf7804234245123123")
+        Purchases.configure(withAPIKey: "YOUR_REVENUECAT_APP_ID")
         
         Purchases.shared.getCustomerInfo { info, error in
             guard let info = info, error == nil else { return }

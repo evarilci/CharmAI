@@ -130,7 +130,7 @@ final class InAppViewController: UIViewController {
         monthlyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         annualyButton.addTarget(self, action: #selector(buttonStates), for: UIControl.Event.touchUpInside)
         let buyAction = UIAction {[self] _ in
-            var isPremium = true
+            let isPremium = true
             if weeklyButton.isSelected {
                 viewModel.fetchPackages(offering: K.RevenueCatIDs.weekly) { package in
                     self.viewModel.purchase(package: package)
@@ -149,9 +149,6 @@ final class InAppViewController: UIViewController {
                 
             }
         }
-            
-            
-        
         tryButton.addAction(buyAction, for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [weeklyButton,monthlyButton,annualyButton])

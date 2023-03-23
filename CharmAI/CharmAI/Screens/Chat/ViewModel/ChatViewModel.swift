@@ -44,6 +44,9 @@ class ChatViewModel: ViewModelProtocol {
         defaults.set(input, forKey: "last")
         saveChat(chate: sender)
         self.messages.append(sender)
+        
+      //  var canSendMessage = isPremium || messages.count <= 11
+        
             if isPremium {
                 print("VIEWMODEL PREMIUM DEFAULTS TRUE")
                 client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
@@ -120,7 +123,8 @@ class ChatViewModel: ViewModelProtocol {
         Purchases.shared.getOfferings { offerings, error in
             guard let offerings = offerings, error == nil else {return}
             guard let package = offerings.all.first?.value.package(identifier: offering) else {return}
-            print("***********************\(package)****************************")
+            print("***********************\(package.storeProduct.price)****************************")
+     
             completion(package)
         }
     }

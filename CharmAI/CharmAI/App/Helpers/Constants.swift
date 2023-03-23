@@ -11,7 +11,7 @@ import Foundation
 struct K {
     
     static let HomeScreenCellIdentifier = "onboardingCell"
-    static let APIKey = "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"
+    static let APIKey = "OPENAI_API_KEY"
     static let settingsTableViewIdentifier = "settingsCell"
     
     struct Images {
@@ -46,9 +46,9 @@ struct K {
     }
     
     struct RevenueCatIDs {
-        static let weekly = "$rc_weekly"
-        static let monthly = "$rc_monthly"
-        static let annual = "$rc_annual"
+        static let weekly = "RC WEEKLY ID"
+        static let monthly = "RC MONTHLY ID"
+        static let annual = "RC ANNUAL ID"
     }
     
     struct Icons {

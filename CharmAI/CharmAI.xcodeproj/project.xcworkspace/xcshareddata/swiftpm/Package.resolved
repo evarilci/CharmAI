@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/adamrushy/OpenAISwift.git",
       "state" : {
-        "revision" : "aeb19b0d5739fd6e3f568ccdb93376827e3cde0e",
-        "version" : "1.2.0"
+        "revision" : "ca66fb720d6ebb657601db5a0852b830ae310a4c",
+        "version" : "1.4.1"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RevenueCat/purchases-ios.git",
       "state" : {
-        "revision" : "5d77aeccee3622dd2a5dbfd7af5aed195b84767e",
-        "version" : "4.17.8"
+        "revision" : "47d9150b04c5fe6e9b37e3b8bfdfb7be606e0f74",
+        "version" : "4.30.5"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BastiaanJansen/toast-swift",
       "state" : {
-        "revision" : "23b4195ea4c9dd705acf184df518196474e1e098",
-        "version" : "1.3.1"
+        "revision" : "bc52aa61d6a372da553d1d59bdd4e56037ae2f14",
+        "version" : "1.5.0"
       }
     }
   ],

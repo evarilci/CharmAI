@@ -20,18 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        var isPremium = false
         let defaults = UserDefaults.standard
         
-        Purchases.configure(withAPIKey: "YOUR_REVENUECAT_APP_ID")
+//        Purchases.configure(withAPIKey: "YOUR_REVENUECAT_APP_ID")
         
-        Purchases.shared.getCustomerInfo { info, error in
-            guard let info = info, error == nil else { return }
-            if  info.entitlements.all["pro"]?.isActive == false {
-                isPremium = false
-                defaults.set(isPremium, forKey: "premium")
-            } else if  info.entitlements.all["pro"]?.isActive == true {
-                isPremium = true
-                defaults.set(isPremium, forKey: "premium")
-            }
+        
+       let model =  ChatViewModel()
+        Task {
+          await  model.getResponse(input: "")
         }
+//        Purchases.shared.getCustomerInfo { info, error in
+//            guard let info = info, error == nil else { return }
+//            if  info.entitlements.all["pro"]?.isActive == false {
+//                isPremium = false
+//                defaults.set(isPremium, forKey: "premium")
+//            } else if  info.entitlements.all["pro"]?.isActive == true {
+//                isPremium = true
+//                defaults.set(isPremium, forKey: "premium")
+//            }
+//        }
         return true
     }
     

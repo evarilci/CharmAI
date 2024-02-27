@@ -9,6 +9,7 @@ import UIKit
 import OpenAISwift
 import CoreData
 import RevenueCat
+import GoogleGenerativeAI
 
 protocol ViewModelDelegate: AnyObject {
     
@@ -19,7 +20,7 @@ protocol ViewModelProtocol {
     var delegate : ViewModelDelegate? {get set}
     func numberOfRows() -> Int
     func chatForRow(at indexPath: Int) -> Chat
-    func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void)
+    func getResponse(input: String) async
     func saveChat(chate: Chat)
     func fetchChat()
     func fetchPackages(offering: String, completion: @escaping(RevenueCat.Package) -> Void)
@@ -37,61 +38,18 @@ class ChatViewModel: ViewModelProtocol {
             delegate?.responseSuccess()
         }
     }
-    func getResponse(input: String, completion: @escaping(Result<String,Error>) -> Void) {
-//        let isPremium = defaults.bool(forKey: "premium")
-//        let senderID = UUID().uuidString
-//        let sender = Chat(data: ["isSender" : true, "id": senderID, "date": Date().timeIntervalSince1970 as Double, "message": input])
-//        defaults.set(input, forKey: "last")
-//        saveChat(chate: sender)
-//        self.messages.append(sender)
-//        
-//      //  var canSendMessage = isPremium || messages.count <= 11
-//        
-//            if isPremium {
-//                print("VIEWMODEL PREMIUM DEFAULTS TRUE")
-//                client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
-//                    switch result {
-//                    case .success(let model):
-//                        let output = model.choices.first?.text ?? "hello"
-//                        let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
-//                        let responseID = UUID().uuidString
-//                        let chat = Chat(data: ["isSender" : false, "id": responseID, "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
-//                        self?.defaults.set(input, forKey: "last")
-//                        self?.saveChat(chate: chat)
-//                        self?.messages.append(chat)
-//                        completion(.success(newOutput))
-//                        self?.delegate?.responseSuccess()
-//                        
-//                    case .failure(let error):
-//                        completion(.failure(error))
-//                    }
-//                })
-//            
-//            } else if isPremium == false && messages.count <= 11 {
-//                client.sendCompletion(with: input, maxTokens: 500, temperature: 1,  completionHandler: { [weak self] result in
-//                    switch result {
-//                    case .success(let model):
-//                        let output = model.choices.first?.text ?? "hello"
-//                        let newOutput = output.trimmingCharacters(in: .whitespacesAndNewlines)
-//                        let responseID = UUID().uuidString
-//                        let chat = Chat(data: ["isSender" : false, "id": responseID, "date": Date().timeIntervalSince1970 as Double, "message": newOutput])
-//                        self?.defaults.set(input, forKey: "last")
-//                        self?.saveChat(chate: chat)
-//                        self?.messages.append(chat)
-//                        completion(.success(newOutput))
-//                        self?.delegate?.responseSuccess()
-//                        
-//                    case .failure(let error):
-//                        completion(.failure(error))
-//                        
-//                    }
-//                })
-//            } else if isPremium == false && messages.count > 11 {
-//                let chat = Chat(data: ["isSender" : false, "id": "paywall", "date": Date().timeIntervalSince1970 as Double, "message": "Go premium for further chattin' !"])
-//                self.messages.append(chat)
-//                self.saveChat(chate: chat)
-//                print("LAST ELSE IF")
-//            }
+    func getResponse(input: String) async {
+        
+        
+        let model = GenerativeModel(name: "gemini-1.0-pro-vision-latest", apiKey: "AIzaSyATSFtRsweXvMztkC3OPYAdR6QcM5EA8ns")
+        let cookieImage = UIImage(named: "coockie")!
+        let prompt = "Do these look store-bought or homemade?"
+
+        let response = try! await model.generateContent(prompt, cookieImage)
+        
+     let first =   response.candidates.first
+        print(first)
+
     }
        
     func saveChat(chate: Chat) {

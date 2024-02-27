@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		787A2FB82B8722FC0075D4F0 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 787A2FB72B8722FC0075D4F0 /* GoogleGenerativeAI */; };
+		787A2FBA2B8723730075D4F0 /* coockie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 787A2FB92B8723730075D4F0 /* coockie.jpg */; };
 		E50E5BEA29C06A4800535AA3 /* CharmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E5BE929C06A4800535AA3 /* CharmButton.swift */; };
 		E50E5BEC29C06C5300535AA3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */; };
 		E50E5BF229C074CE00535AA3 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = E50E5BF129C074CE00535AA3 /* Hero */; };
@@ -41,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		787A2FB92B8723730075D4F0 /* coockie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coockie.jpg; sourceTree = "<group>"; };
 		E50E5BE929C06A4800535AA3 /* CharmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharmButton.swift; sourceTree = "<group>"; };
 		E50E5BEB29C06C5300535AA3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E554C17F29C0557E00053C44 /* CharmAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharmAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +83,7 @@
 				E50E5BF229C074CE00535AA3 /* Hero in Frameworks */,
 				E57EAE2429C85BC4004F7519 /* RevenueCat in Frameworks */,
 				E57EAE2729C86F1A004F7519 /* StoreKit.framework in Frameworks */,
+				787A2FB82B8722FC0075D4F0 /* GoogleGenerativeAI in Frameworks */,
 				E5B8ABA629C35E9F00D99B7A /* OpenAISwift in Frameworks */,
 				E554C1A729C05C6400053C44 /* SnapKit in Frameworks */,
 			);
@@ -118,6 +122,7 @@
 		E554C18129C0557E00053C44 /* CharmAI */ = {
 			isa = PBXGroup;
 			children = (
+				787A2FB92B8723730075D4F0 /* coockie.jpg */,
 				E554C19929C058B800053C44 /* App */,
 				E554C19A29C058C400053C44 /* Screens */,
 				E554C18B29C0557E00053C44 /* CharmAI.xcdatamodeld */,
@@ -336,6 +341,7 @@
 				E5B8ABA529C35E9F00D99B7A /* OpenAISwift */,
 				E57368CD29C496D900E0E6B9 /* Toast */,
 				E57EAE2329C85BC4004F7519 /* RevenueCat */,
+				787A2FB72B8722FC0075D4F0 /* GoogleGenerativeAI */,
 			);
 			productName = CharmAI;
 			productReference = E554C17F29C0557E00053C44 /* CharmAI.app */;
@@ -371,6 +377,7 @@
 				E5B8ABA429C35E9F00D99B7A /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				E57368CC29C496D900E0E6B9 /* XCRemoteSwiftPackageReference "toast-swift" */,
 				E57EAE2229C85BC4004F7519 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				787A2FB62B8722FC0075D4F0 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			productRefGroup = E554C18029C0557E00053C44 /* Products */;
 			projectDirPath = "";
@@ -388,6 +395,7 @@
 			files = (
 				E554C19229C0557F00053C44 /* LaunchScreen.storyboard in Resources */,
 				E554C18F29C0557F00053C44 /* Assets.xcassets in Resources */,
+				787A2FBA2B8723730075D4F0 /* coockie.jpg in Resources */,
 				E5B8ABA129C327DA00D99B7A /* Inter-Bold.ttf in Resources */,
 				E5B8ABA329C327E200D99B7A /* Inter-Medium.ttf in Resources */,
 				E556158829C0B34400A99043 /* Inter.ttf in Resources */,
@@ -630,6 +638,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		787A2FB62B8722FC0075D4F0 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.8;
+			};
+		};
 		E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
@@ -673,6 +689,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		787A2FB72B8722FC0075D4F0 /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 787A2FB62B8722FC0075D4F0 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
 		E50E5BF129C074CE00535AA3 /* Hero */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E50E5BF029C074CE00535AA3 /* XCRemoteSwiftPackageReference "Hero" */;

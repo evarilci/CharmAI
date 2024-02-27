@@ -29,14 +29,14 @@ final class ChatViewController: UIViewController {
         setupUI()
         viewModel.fetchChat()
         chatInputView.sendAction = { [self] input in
-            viewModel.getResponse(input: input!) { result in
-                switch result {
-                case .success(let model):
-                    print(model)
-                case.failure(let error):
-                    print(error)
-                }
-            }
+//            viewModel.getResponse(input: input!) { result in
+//                switch result {
+//                case .success(let model):
+//                    print(model)
+//                case.failure(let error):
+//                    print(error)
+//                }
+//            }
         }
         
         if !isPremium! {
@@ -97,15 +97,15 @@ final class ChatViewController: UIViewController {
     @objc func refresh() {
         
         let input = defaults.string(forKey: "last") ?? "NO LAST MESSAGE"
-        viewModel.getResponse(input: input) { result  in
-            switch result {
-            case .success(let model):
-                print(model)
-            case.failure(let error):
-                print(error)
-            }
-            
-        }
+//        viewModel.getResponse(input: input) { result  in
+//            switch result {
+//            case .success(let model):
+//                print(model)
+//            case.failure(let error):
+//                print(error)
+//            }
+//            
+//        }
  
     }
     //MARK: UI METHOD
